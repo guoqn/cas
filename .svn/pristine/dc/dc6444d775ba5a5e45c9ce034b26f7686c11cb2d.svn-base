@@ -1,0 +1,8 @@
+#Wed Jan 14 09:23:04 CST 2015
+com.ffcs.crm.intf.bean.modpreorderbean.createPreSaleOrder.MsgBody=com.ffcs.crm.intf.bean.modpreorderbean.createPreSaleOrder.descriptors.MsgBodyDescriptor
+com.ffcs.crm.intf.bean.modpreorderbean.createPreSaleOrder.InParam=com.ffcs.crm.intf.bean.modpreorderbean.createPreSaleOrder.descriptors.InParamDescriptor
+com.ffcs.crm.intf.bean.modpreorderbean.createPreSaleOrder.MsgHead=com.ffcs.crm.intf.bean.modpreorderbean.createPreSaleOrder.descriptors.MsgHeadDescriptor
+com.ffcs.crm.intf.bean.modpreorderbean.createPreSaleOrder.PreOrder=com.ffcs.crm.intf.bean.modpreorderbean.createPreSaleOrder.descriptors.PreOrderDescriptor
+com.ffcs.crm.intf.bean.modpreorderbean.createPreSaleOrder.Error=com.ffcs.crm.intf.bean.modpreorderbean.createPreSaleOrder.descriptors.ErrorDescriptor
+com.ffcs.crm.intf.bean.modpreorderbean.createPreSaleOrder.OutParam=com.ffcs.crm.intf.bean.modpreorderbean.createPreSaleOrder.descriptors.OutParamDescriptor
+com.ffcs.crm.intf.bean.modpreorderbean.createPreSaleOrder.Root=com.ffcs.crm.intf.bean.modpreorderbean.createPreSaleOrder.descriptors.RootDescriptor

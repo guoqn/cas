@@ -1,0 +1,8 @@
+#zk\u914D\u7F6E
+rocketmq.namesrvAddr=http://134.129.68.170:13223/rocketmq-nameserver/Namesrv
+#\u6D88\u606F\u4E3B\u9898\u914D\u7F6E
+track.topic=DEVOPS_EAGELEYE_TRACK
+track.producer.group=P_DEVOPS_EAGELEYE_TRACK_PRODUCER
+#\u8BA4\u8BC1\u7528\u6237\u540D/\u5BC6\u7801
+ctg.mq.authID=admin1
+ctg.mq.authPWD=123456

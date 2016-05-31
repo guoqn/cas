@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 (http://www.altova.com) by  () -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://www.chinatelecom.com/crm/comm/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.chinatelecom.com/crm/comm/" schemaLocation="../comm.xsd"/>
+	<xs:element name="root">
+		<xs:annotation>
+			<xs:documentation>根节点</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="msgHead" type="ns2:msgHead">
+					<xs:annotation>
+						<xs:documentation>消息头</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="msgBody"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="msgBody">
+		<xs:annotation>
+			<xs:documentation>消息体</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="inParam"/>
+				<xs:element ref="outParam"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="inParam">
+		<xs:annotation>
+			<xs:documentation>请求信息</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="preOrderNumber" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>预受理单号</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="outParam">
+		<xs:annotation>
+			<xs:documentation>响应信息</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="result" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>处理结果
+0：成功
+1：失败</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="receiveStaff" type="receiveStaff" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>接收员工</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="error" type="ns2:error" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>错误信息</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="receiveStaff">
+		<xs:annotation>
+			<xs:documentation>状态信息</xs:documentation>
+		</xs:annotation>
+		<xs:all>
+			<xs:element name="staffName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>当前处理员工</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="contactPhone" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>员工联系电话</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="organizationName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>团队名称</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:all>
+	</xs:complexType>
+</xs:schema>

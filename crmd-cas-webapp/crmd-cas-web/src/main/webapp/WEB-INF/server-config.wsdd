@@ -1,0 +1,28 @@
+<deployment xmlns="http://xml.apache.org/axis/wsdd/"
+	xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+	<handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper" />
+	<!-- 全局配置 -->
+
+	<globalConfiguration>
+		<parameter name="axis.disableServiceList" value="true"/>
+	</globalConfiguration>
+
+	<!--集中受理服务提供-->
+	<service name="CasService" provider="java:RPC" style="wrapped" use="literal">
+		<parameter name="wsdlTargetNamespace" value="http://www.ffcs.cn/CasService/"/>
+		<parameter name="className" value="com.ffcs.crmd.cas.intf.facade.service.CasService"/>
+		<parameter name="allowedMethods" value="*"/>
+	</service>
+	<transport name="http">
+		<requestFlow>
+			<handler type="URLMapper" />
+			<handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler" />
+		</requestFlow>
+	</transport>
+	<transport name="local">
+		<responseFlow>
+			<handler type="LocalResponder" />
+		</responseFlow>
+	</transport>
+
+</deployment>

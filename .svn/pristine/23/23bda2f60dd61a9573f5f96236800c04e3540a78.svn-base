@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2010 The myBatis Team Licensed under the Apache License, Version 
+	2.0 (the "License"); you may not use this file except in compliance with 
+	the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
+	Unless required by applicable law or agreed to in writing, software distributed 
+	under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES 
+	OR CONDITIONS OF ANY KIND, either express or implied. See the License for 
+	the specific language governing permissions and limitations under the License. -->
+
+<!-- This is a org.mybatis.spring.sample context that shows four different 
+	ways to integrate with Spring. FooService* are beans that act as business 
+	services. All of the services implement FooService which is annotated as 
+	@Transactional. Each one is injected with a mapper coded/created in a different 
+	way: userMapperBean is created with a MapperFactoryBean (has no implementation) 
+	userMapper is searched and registered by the MapperScannerConfigurer (has 
+	no implementation) userMapperDaoSupport extends SqlSessionDaoSupport userMapperSqlSession 
+	uses directly MyBatis API (has no transaction support) version: $Id: context.xml 
+	2717 2010-10-15 15:37:00Z eduardo.macarron $ -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+     http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd"
+	default-lazy-init="true">
+	
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="order" value="5" />  
+    	<property name="ignoreUnresolvablePlaceholders" value="true" /> 
+		<property name="locations">
+			<list>
+				<value>classpath:sha.properties</value>
+				<value>classpath:conf/jdbc.properties</value>
+			</list>
+		</property>
+		<property name="fileEncoding" value="utf-8" />
+	</bean>
+	
+
+	<aop:aspectj-autoproxy />
+	<!-- ================================start 事务相关控制================================================= -->
+	<bean name="transactionManager"
+		class="com.ffcs.crmd.appha.duplicate.DsTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager"
+		proxy-target-class="false" />
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="remove" propagation="REQUIRED" read-only="false" />
+			<tx:method name="add*" propagation="REQUIRED" read-only="false" />
+			<tx:method name="delete*" propagation="REQUIRED" read-only="false" />
+			<tx:method name="insert*" propagation="REQUIRED" read-only="false" />
+			<tx:method name="save*" propagation="REQUIRED" read-only="false" />
+			<tx:method name="update*" propagation="REQUIRED" read-only="false" />
+			<tx:method name="cancel*" propagation="REQUIRED" read-only="false" />
+			<tx:method name="submit*" propagation="REQUIRED" read-only="false" />
+		</tx:attributes>
+	</tx:advice>
+	<aop:config>
+		<aop:advisor id="serviceTx" advice-ref="txAdvice"
+			pointcut="execution(* com..service..*Service.*(..))" order="1"></aop:advisor>
+		<aop:advisor id="managerTx" advice-ref="txAdvice"
+			pointcut="execution(* com..manager..*Manager.*(..))" order="2"></aop:advisor>
+		<aop:advisor id="daoTx" advice-ref="txAdvice"
+			pointcut="execution(* com..dao..*Dao.*(..))" order="3"></aop:advisor>
+		<aop:advisor id="repositoryTx" advice-ref="repositoryAdvice"
+			pointcut="execution(* com..repositor*..*Repository.*(..))" order="4"></aop:advisor>
+		<aop:advisor id="insertDupliDate" advice-ref="obtainDupliDate"
+			pointcut="execution(* com.ffcs.crmd.platform.data.dao.impl.CrmBaseDaoImpl.insert(..))"></aop:advisor>
+		<aop:advisor id="updateByPrimaryKeyDupliDate" advice-ref="obtainDupliDate"
+			pointcut="execution(* com.ffcs.crmd.platform.data.dao.impl.CrmBaseDaoImpl.updateByPrimaryKey(..))"></aop:advisor>
+		<aop:advisor id="deleteByPrimaryKeyDupliDate" advice-ref="obtainDupliDate"
+			pointcut="execution(* com.ffcs.crmd.platform.data.dao.impl.CrmBaseDaoImpl.deleteByPrimaryKey(..))"></aop:advisor>
+		<aop:advisor id="updateSelectiveByPrimaryKeyDupliDate" advice-ref="obtainDupliDate"
+			pointcut="execution(* com.ffcs.crmd.platform.data.dao.impl.CrmBaseDaoImpl.updateSelectiveByPrimaryKey(..))"></aop:advisor>
+		<aop:advisor id="updateSelectiveByPrimaryKeyDupliDate" advice-ref="obtainDupliDate"
+			pointcut="execution(* com.ffcs.crmd.cas.core.ddd.filter.DefaultActionFilter.doBeforeAction(..))"></aop:advisor>
+	</aop:config>
+	<tx:advice id="repositoryAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="insert*" read-only="false" propagation="REQUIRED" />
+			<tx:method name="update*" read-only="false" propagation="REQUIRED" />
+			<tx:method name="delete*" read-only="false" propagation="REQUIRED" />
+			<tx:method name="jdbcExecute*" read-only="false"
+				propagation="REQUIRED" />
+			<tx:method name="jdbcUpdate*" read-only="false"
+				propagation="REQUIRED" />
+			<tx:method name="remove*" read-only="false" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+    <bean id="obtainDupliDate" class="com.ffcs.crmd.appha.obtain.ObtainDupliDate"
+		scope="prototype"/>
+	<bean id="dsSwitcherService" class="com.ffcs.crmd.appha.switcher.impl.DsSwitcherServiceImpl" />
+	
+	<bean id="cacheService" class="com.ctg.itrdc.cache.core.CacheService"/>
+	
+	<bean id="etlCacheService" class="com.ffcs.crmd.appha.cache.impl.CtgCacheServiceImpl">
+		<property name="groupId">
+			<value>${crm_main_cache_group}</value>
+		</property>
+		<property name="cacheService" ref="cacheService"></property>
+	</bean>
+	<!-- ================================end 事务相关控制================================================= -->
+
+	<!-- ================================start 数据源相关控制================================================= -->
+	<bean id="dataSourceForMysql" class="com.alibaba.druid.pool.DruidDataSource"
+		 destroy-method="close">
+		<!-- 基本属性 url、user、password -->
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+
+		<!-- 配置初始化大小、最小、最大 -->
+		<property name="initialSize" value="${jdbc.initialSize}" />
+		<property name="minIdle" value="${jdbc.minIdle}" />
+		<property name="maxActive" value="${jdbc.maxActive}" />
+
+		<!-- 配置获取连接等待超时的时间 -->
+		<property name="maxWait" value="${jdbc.maxWait}" />
+
+		<!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+		<property name="timeBetweenEvictionRunsMillis" value="${jdbc.timeBetweenEvictionRunsMillis}" />
+
+		<!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+		<property name="minEvictableIdleTimeMillis" value="${jdbc.minEvictableIdleTimeMillis}" />
+
+		<property name="validationQuery" value="${jdbc.validationQuery}" />
+		<property name="testWhileIdle" value="${jdbc.testWhileIdle}" />
+		<property name="testOnBorrow" value="${jdbc.testOnBorrow}" />
+		<property name="testOnReturn" value="${jdbc.testOnReturn}" />
+
+		<!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
+		<!-- 通常来说，只需要修改initialSize、minIdle、maxActive。 如果用Oracle，则把poolPreparedStatements配置为true，mysql可以配置为false。分库分表较多的数据库，建议配置为false。 -->
+		<property name="poolPreparedStatements" value="${jdbc.poolPreparedStatements}" />
+		<property name="maxPoolPreparedStatementPerConnectionSize"
+			value="${jdbc.maxPoolPreparedStatementPerConnectionSize}" />
+		<property name="removeAbandoned" value="${jdbc.removeAbandoned}"></property>
+		<property name="removeAbandonedTimeoutMillis" value="${jdbc.removeAbandonedTimeoutMillis}"></property>
+		<property name="resetStatEnable" value="${jdbc.resetStatEnable}"></property>
+		<!-- <property name="filters" value="stat"></property> -->
+		<!-- 配置监控统计拦截的filters -->
+		<property name="proxyFilters">
+			<list>
+				<ref bean="stat-filter" />
+				<ref bean="log-filter" />
+			</list>
+		</property>
+
+	</bean>
+	
+	<bean id="dataSourceForOracle" class="com.alibaba.druid.pool.DruidDataSource"
+		 destroy-method="close">
+		<!-- 基本属性 url、user、password -->
+		<property name="url" value="${jdbc.oracle.url}" />
+		<property name="username" value="${jdbc.oracle.username}" />
+		<property name="password" value="${jdbc.oracle.password}" />
+
+		<!-- 配置初始化大小、最小、最大 -->
+		<property name="initialSize" value="${jdbc.initialSize}" />
+		<property name="minIdle" value="${jdbc.minIdle}" />
+		<property name="maxActive" value="${jdbc.maxActive}" />
+
+		<!-- 配置获取连接等待超时的时间 -->
+		<property name="maxWait" value="${jdbc.maxWait}" />
+
+		<!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+		<property name="timeBetweenEvictionRunsMillis" value="${jdbc.timeBetweenEvictionRunsMillis}" />
+
+		<!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+		<property name="minEvictableIdleTimeMillis" value="${jdbc.minEvictableIdleTimeMillis}" />
+
+		<property name="validationQuery" value="${jdbc.oracle.validationQuery}" />
+		<property name="testWhileIdle" value="${jdbc.testWhileIdle}" />
+		<property name="testOnBorrow" value="${jdbc.testOnBorrow}" />
+		<property name="testOnReturn" value="${jdbc.testOnReturn}" />
+
+		<!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
+		<!-- 通常来说，只需要修改initialSize、minIdle、maxActive。 如果用Oracle，则把poolPreparedStatements配置为true，mysql可以配置为false。分库分表较多的数据库，建议配置为false。 -->
+		<property name="poolPreparedStatements" value="${jdbc.poolPreparedStatements}" />
+		<property name="maxPoolPreparedStatementPerConnectionSize"
+			value="${jdbc.maxPoolPreparedStatementPerConnectionSize}" />
+		<property name="removeAbandoned" value="${jdbc.removeAbandoned}"></property>
+		<property name="removeAbandonedTimeoutMillis" value="${jdbc.removeAbandonedTimeoutMillis}"></property>
+		<property name="resetStatEnable" value="${jdbc.resetStatEnable}"></property>
+		<!-- <property name="filters" value="stat"></property> -->
+		<!-- 配置监控统计拦截的filters -->
+		<property name="proxyFilters">
+			<list>
+				<ref bean="stat-filter" />
+				<ref bean="log-filter" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="dataSource" class="com.ffcs.crmd.appha.route.DynamicDataSource" init-method="init" >  
+        <property name="targetDataSources">    
+              <map key-type="java.lang.String">    
+                  <!-- write -->  
+                 <entry key="dataSourceForMysql" value-ref="dataSourceForMysql"/>    
+                 <!-- read -->  
+                 <entry key="dataSourceForOracle" value-ref="dataSourceForOracle"/>    
+              </map>    
+                
+        </property>    
+    </bean>  
+    
+	<bean id="jdbcTemplate" class="com.ctg.itrdc.platform.data.jdbctemplate.ItrdcJdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- ================================end 数据源相关控制================================================= -->
+
+	<!-- ================================start 消息中间件相关控制================================================= -->
+	<!-- 默认生产者 -->
+	<bean id="dalMqDefaultProducer"
+		class="com.ffcs.crm.tools.mq.producer.ctg.impl.CtgMqDefaultProducer"
+		 destroy-method="close">
+		<!-- 名服务地址  -->
+		<property name="nameSrv" value="${dal.rocketmq.namesrvAddr}"></property>
+		<!-- 消费组名  -->
+		<property name="groupName" value="${dal.mysql.producer.group}"></property>
+		<!-- 主题  -->
+		<property name="topicName" value="${dal.mysql.topic}"></property>
+		<!-- 验证用户ID -->
+		<property name="authID" value="${dal.mq.authID}"></property>
+		<!-- 验证用户密码  -->
+		<property name="authPWD" value="${dal.mq.authPWD}"></property>
+		<!-- <可选>发送消息超时时间  缺省:30s -->
+		<property name="sendTimeOut" value="30000"></property>
+		<!-- <可选>消息体最大值 缺省:128KB-->
+		<property name="maxMessageSize" value="#{3*1024*1024}"></property>
+	</bean>
+	
+	<!-- 默认生产者/ -->
+	
+	<bean id="dalMqQueryImpl"
+		class="com.ffcs.crm.tools.mq.query.ctg.impl.CtgMqQueryImpl"
+		destroy-method="close">
+		<!-- 名服务地址  -->
+		<property name="nameSrv" value="${dal.rocketmq.namesrvAddr}"></property>
+        <!-- 验证用户ID -->
+		<property name="authID" value="${dal.mq.authID}"></property>
+		<!-- 验证用户密码  -->
+		<property name="authPWD" value="${dal.mq.authPWD}"></property>
+	</bean>
+	<bean id="dupliDataSupport"
+		class="com.ffcs.crmd.appha.duplicate.impl.DupliDataSupportImpl" />
+	<bean id="dupliDataService" class="com.ffcs.crmd.appha.duplicate.impl.DupliDataServiceImpl" >
+		<property name="producer" ref= "dalMqDefaultProducer"></property>
+		<property name="ctgMqQueryImpl" ref= "dalMqQueryImpl"></property>
+		<property name="dupliDataSupport" ref= "dupliDataSupport"></property>
+	</bean>
+	<!-- ================================end 消息中间件相关控制================================================= -->
+</beans>

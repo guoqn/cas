@@ -1,0 +1,6 @@
+#Wed Apr 27 21:29:21 CST 2016
+com.ffcs.crmd.cas.bean.crmbean.continueacceptconfirm.Error=com.ffcs.crmd.cas.bean.crmbean.continueacceptconfirm.descriptors.ErrorDescriptor
+com.ffcs.crmd.cas.bean.crmbean.continueacceptconfirm.OutParam=com.ffcs.crmd.cas.bean.crmbean.continueacceptconfirm.descriptors.OutParamDescriptor
+com.ffcs.crmd.cas.bean.crmbean.continueacceptconfirm.InParam=com.ffcs.crmd.cas.bean.crmbean.continueacceptconfirm.descriptors.InParamDescriptor
+com.ffcs.crmd.cas.bean.crmbean.continueacceptconfirm.Root=com.ffcs.crmd.cas.bean.crmbean.continueacceptconfirm.descriptors.RootDescriptor
+com.ffcs.crmd.cas.bean.crmbean.continueacceptconfirm.MsgBody=com.ffcs.crmd.cas.bean.crmbean.continueacceptconfirm.descriptors.MsgBodyDescriptor

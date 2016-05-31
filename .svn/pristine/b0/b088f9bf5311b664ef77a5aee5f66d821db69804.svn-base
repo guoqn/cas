@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<design xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="crm.xsd">
+	<file name="presaleorder/preSaleOrder.xsd" description="" package="com.ffcs.crmd.cas.bean.casbean.presaleorder"/>
+	<file name="presaleorder/preSaleOrderAttr.xsd" description="" package="com.ffcs.crmd.cas.bean.casbean.presaleorder"/>
+	<file name="presaleorder/preSaleOrderPool.xsd" description="" package="com.ffcs.crmd.cas.bean.casbean.presaleorder"/>
+	<file name="presaleorder/iSaleAcctItem.xsd" description="" package="com.ffcs.crmd.cas.bean.casbean.presaleorder"/>
+	<file name="presaleorder/preSaleAcctItem.xsd" description="" package="com.ffcs.crmd.cas.bean.casbean.presaleorder"/>
+	<file name="presaleorder/preSaleAcctItemAttr.xsd" description="" package="com.ffcs.crmd.cas.bean.casbean.presaleorder"/>
+	<file name="presaleorder/preSaleOrderItem.xsd" description="" package="com.ffcs.crmd.cas.bean.casbean.presaleorder"/>
+	<file name="comm.xsd" description="" package="com.ffcs.crmd.cas.bean.casbean.comm"/>
+    <file name="cancel/cancelOrderQuery.xsd" description="" package="com.ffcs.crmd.cas.bean.casbean.cancel.cancelorderquery"/>
+	<file name="cancel/cancelOrderCommit.xsd" description="" package="com.ffcs.crmd.cas.bean.casbean.cancel.cancelordercommit"/>
+	<file name="query/queryPreOrderStatus.xsd" description="" package="com.ffcs.crmd.cas.bean.casbean.query.querypreorderstatus"/>
+	<file name="query/queryPreOrderIsRelation.xsd" description="" package="com.ffcs.crmd.cas.bean.casbean.query.querypreorderisrelation"/>
+	<file name="autogenorder/autoGenOrderSave.xsd" description="" package="com.ffcs.crmd.cas.bean.casbean.autogenordersave"/>
+	<file name="autogenorder/autoGenOrder.xsd" description="" package="com.ffcs.crmd.cas.bean.casbean.autogenorder"/>
+	<file name="autogenorder/autoGenOrderComplete.xsd" description="" package="com.ffcs.crmd.cas.bean.casbean.autogenordercomplete"/>
+	<file name="presaleorderdeal/dropPreSaleOrderToCrm.xsd" description="" package="com.ffcs.crmd.cas.bean.casbean.droppresaleordertocrm"/>
+	<file name="presaleorderdeal/modPreSaleOrder.xsd" description="" package="com.ffcs.crmd.cas.bean.casbean.modpresaleorder"/>
+	<file name="query/preSaleOrderHasFee.xsd" description="" package="com.ffcs.crmd.cas.bean.casbean.query.presaleorderhasfee"/>
+	<file name="query/queryPreOrder.xsd" description="" package="com.ffcs.crmd.cas.bean.casbean.query.querypreOrder"/>
+	<file name="save/preSaleOrderDeal.xsd" description="" package="com.ffcs.crmd.cas.bean.casbean.presaleorderdeal"/>
+	<file name="preordercommitcheck/preOrderCommitCheck.xsd" description="" package="com.ffcs.crmd.cas.bean.casbean.preordercommitcheck"/>
+	<file name="save/preSaleOrderCommit.xsd" description="" package="com.ffcs.crmd.cas.bean.casbean.presaleordercommit"/>
+	<file name="save/preSaleOrderPoolCommit.xsd" description="" package="com.ffcs.crmd.cas.bean.casbean.presaleorderpoolcommit"/>
+	<file name="save/intfPreOrderCommit.xsd" description="" package="com.ffcs.crmd.cas.bean.casbean.intfpreordercommit"/>
+	<file name="query/queryPreOrderFlow.xsd" description="" package="com.ffcs.crmd.cas.bean.casbean.query.querypreorderflow"/>
+	<file name="query/queryPreOrderInfo.xsd" description="" package="com.ffcs.crmd.cas.bean.casbean.query.querypreorderinfo"/>
+	<file name="query/queryPreOrderForOrder.xsd" description="" package="com.ffcs.crmd.cas.bean.casbean.query.querypreorderfororder"/>
+	<file name="query/queryPreSaleOrder.xsd" description="" package="com.ffcs.crmd.cas.bean.casbean.query.queryPreSaleOrder"/>
+	<file name="query/preSaleOrderCount.xsd" description="" package="com.ffcs.crmd.cas.bean.casbean.query.preSaleOrderCount"/>
+	<file name="query/queryReturnList.xsd" description="" package="com.ffcs.crmd.cas.bean.casbean.query.queryReturnList"/>
+	<file name="save/returnToPreSale.xsd" description="" package="com.ffcs.crmd.cas.bean.casbean.save.returntopresale"/>
+	<file name="intassignorg/qureryintAssignOrg.xsd" description="" package="com.ffcs.crmd.cas.bean.casbean.query.qureryintassignorg"/>
+	<file name="presaleorderdeal/checkCouldCancel.xsd" description="" package="com.ffcs.crmd.cas.bean.casbean.checkcouldcancel"/>
+	<file name="cancel/cancelPreOrder.xsd" description="" package="com.ffcs.crmd.cas.bean.casbean.cancelpreorder"/>
+	</design>

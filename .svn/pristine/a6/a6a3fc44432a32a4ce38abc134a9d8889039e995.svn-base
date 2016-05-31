@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- edited with XMLSpy v2010 (http://www.altova.com) by MESMERiZE (MiZE) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://www.chinatelecom.com/crm/comm/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.chinatelecom.com/crm/comm/" schemaLocation="../comm.xsd"/>
+	<xs:element name="root">
+		<xs:annotation>
+			<xs:documentation>根节点</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="msgHead" type="ns1:msgHead">
+					<xs:annotation>
+						<xs:documentation>消息头</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="msgBody"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="msgBody">
+		<xs:annotation>
+			<xs:documentation>消息体</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="inParam"/>
+				<xs:element ref="outParam"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="inParam">
+		<xs:annotation>
+			<xs:documentation>请求信息</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="saleStaffId" type="xs:string" minOccurs="0"/>
+				<xs:element name="saleOrgId" type="xs:string" minOccurs="0"/>
+				<xs:element name="currentPage" type="xs:int" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>当前页号</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="perPageNum" type="xs:int" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>每页多少条</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="outParam">
+		<xs:annotation>
+			<xs:documentation>响应信息</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="result">
+					<xs:annotation>
+						<xs:documentation>处理结果
+0：成功 
+1：失败</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:length value="1"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="preOrderNum" type="xs:int" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>处理结果</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="returnInfo" type="returnInfo" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="error" type="ns1:error" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>错误信息</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="returnInfo">
+		<xs:annotation>
+			<xs:documentation>返回信息</xs:documentation>
+		</xs:annotation>
+		<xs:all>
+			<xs:element name="preOrderNumber" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>P单号</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="custSoNumber" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>CRM订单号</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="preStatusCd" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>P单状态</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="statusCd" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>工单状态</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="acceptDate" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>收单时间</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="returnDate" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>退单时间</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="returnStaffId" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>退单人员ID</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="returnStaffCode" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>退单人员工号</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="returnStaffName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>退单人员姓名</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="returnStaffPhone" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>退单人员联系号码</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="returnType" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>退单原因类型</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="returnReason" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>退单原因描述</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="returnRemark" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>退单信息备注</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:all>
+	</xs:complexType>
+</xs:schema>

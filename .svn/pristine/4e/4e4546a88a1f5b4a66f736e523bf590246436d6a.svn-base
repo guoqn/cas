@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 (http://www.altova.com) by  () -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://www.chinatelecom.com/crm/comm/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.chinatelecom.com/crm/comm/" schemaLocation="../comm.xsd"/>
+	<xs:element name="root">
+		<xs:annotation>
+			<xs:documentation>根节点</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="msgHead" type="ns1:msgHead">
+					<xs:annotation>
+						<xs:documentation>消息头</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="msgBody"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="msgBody">
+		<xs:annotation>
+			<xs:documentation>消息体</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="inParam"/>
+				<xs:element ref="outParam"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="inParam">
+		<xs:annotation>
+			<xs:documentation>请求信息</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="connectInfo" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="preOrderNumber" type="xs:string"/>
+							<xs:element name="custSoNumber" type="xs:string"/>
+							<xs:element name="isRel" type="xs:string">
+								<xs:annotation>
+									<xs:documentation>是否已经关联
+1--已关联
+2--未关联</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="outParam">
+		<xs:annotation>
+			<xs:documentation>响应信息</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="result">
+					<xs:annotation>
+						<xs:documentation>处理结果
+0：成功 
+1：失败</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:length value="1"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="error" type="ns1:error" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>错误信息</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="custOrder" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="custId" type="xs:long" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>客户ID</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="orderType" type="xs:string" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>订单类型</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="channelId" type="xs:long" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>渠道ID</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="orgId" type="xs:long" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>组织ID</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="areaId" type="xs:long" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>C3区域</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="regionCd" type="xs:long" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>区域id</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="custOrderId" type="xs:long" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>订单ID</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="isHis" type="xs:string" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>是否历史表</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="custSoNumber" type="xs:string" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>订单流水号</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

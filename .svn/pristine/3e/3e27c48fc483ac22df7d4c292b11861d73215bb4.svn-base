@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- edited with XMLSpy v2013 (http://www.altova.com) by  () -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://www.chinatelecom.com/crm/comm/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.chinatelecom.com/crm/comm/" schemaLocation="../comm.xsd"/>
+	<xs:element name="root">
+		<xs:annotation>
+			<xs:documentation>根节点</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="msgHead" type="ns1:msgHead">
+					<xs:annotation>
+						<xs:documentation>消息头</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="msgBody"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="msgBody">
+		<xs:annotation>
+			<xs:documentation>消息体</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="inParam"/>
+				<xs:element ref="outParam"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="inParam">
+		<xs:annotation>
+			<xs:documentation>请求信息</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="autoGenOrder"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="outParam">
+		<xs:annotation>
+			<xs:documentation>响应信息</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="result">
+					<xs:annotation>
+						<xs:documentation>处理结果
+0：成功 
+1：失败</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:length value="1"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="error" type="ns1:error" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>错误信息</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="autoGenOrder">
+		<xs:annotation>
+			<xs:documentation>自动受理信息</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="preOrderNumber" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>预受理订单号</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="sceneType" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>接收时间</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="prodOfferId" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>订单类型</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="custId" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>团队ID</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="statusCd" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>渠道ID</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="shardingId" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>渠道ID</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="sceneFlag" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>客户ID</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="accNbr" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>预受理标志</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="xmlMsg" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>订单来源</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

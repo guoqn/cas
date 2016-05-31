@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!--
+		edited with XMLSpy v2011 (http://www.altova.com) by user (user-comp)
+	-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:ns1="http://www.chinatelecom.com/crm/comm/" elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.chinatelecom.com/crm/comm/"
+		schemaLocation="../comm.xsd" />
+	<xs:element name="root">
+		<xs:annotation>
+			<xs:documentation>根节点</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="msgHead" type="ns1:msgHead">
+					<xs:annotation>
+						<xs:documentation>消息头</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="msgBody" />
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="msgBody">
+		<xs:annotation>
+			<xs:documentation>消息体</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="inParam" />
+				<xs:element ref="outParam" />
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="inParam">
+		<xs:annotation>
+			<xs:documentation>请求信息</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="custOrderId" type="xs:string" />
+				<xs:element name="staffPositionId" type="xs:long">
+					<xs:annotation>
+						<xs:documentation>当前员工任职关系标识
+							字段长度： 12</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="teamId" type="xs:long">
+					<xs:annotation>
+						<xs:documentation>受理班组ID </xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="customerOrder" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>客户订单信息</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="custSoNumber" type="xs:string">
+								<xs:annotation>
+									<xs:documentation>CRM客户订单流水号</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="cancelInfo">
+								<xs:annotation>
+									<xs:documentation>撤销信息</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="cancelType" type="xs:string">
+											<xs:annotation>
+												<xs:documentation>keep 保留，即不撤销buyerCancel 用户撤销；sellerCancel
+													局方撤销</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="cancelReason" type="xs:string"
+											minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>撤销原因，用户撤销和局方撤销的时候要必填，PAD和CRM同时做限制
+												</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="outParam">
+		<xs:annotation>
+			<xs:documentation>响应信息</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="result">
+					<xs:annotation>
+						<xs:documentation>处理结果
+							0：成功
+							1：失败</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:length value="1" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="isCancel" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>0--自动
+							1--非自动</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="custSoNumbers" type="custSoNumbers"
+					minOccurs="0" maxOccurs="unbounded" />
+				<xs:element name="error" type="ns1:error" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>错误信息</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="custSoNumbers">
+		<xs:annotation>
+			<xs:documentation>订单流水列表</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="custSoNumber" type="xs:string"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

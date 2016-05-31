@@ -1,0 +1,6 @@
+#Fri Mar 04 20:17:23 CST 2016
+com.ffcs.crmd.cas.bean.casbean.presaleorderdeal.InParam=com.ffcs.crmd.cas.bean.casbean.presaleorderdeal.descriptors.InParamDescriptor
+com.ffcs.crmd.cas.bean.casbean.presaleorderdeal.MsgBody=com.ffcs.crmd.cas.bean.casbean.presaleorderdeal.descriptors.MsgBodyDescriptor
+com.ffcs.crmd.cas.bean.casbean.presaleorderdeal.PreSaleOrder=com.ffcs.crmd.cas.bean.casbean.presaleorderdeal.descriptors.PreSaleOrderDescriptor
+com.ffcs.crmd.cas.bean.casbean.presaleorderdeal.Root=com.ffcs.crmd.cas.bean.casbean.presaleorderdeal.descriptors.RootDescriptor
+com.ffcs.crmd.cas.bean.casbean.presaleorderdeal.OutParam=com.ffcs.crmd.cas.bean.casbean.presaleorderdeal.descriptors.OutParamDescriptor

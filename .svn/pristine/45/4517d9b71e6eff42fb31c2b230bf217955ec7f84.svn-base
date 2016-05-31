@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- edited with XMLSpy v2013 (http://www.altova.com) by  () -->
+<xs:schema xmlns="http://www.chinatelecom.com/crm/preSaleOrderAttr/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.chinatelecom.com/crm/preSaleOrderAttr/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:complexType name="preSaleOrderAttr">
+		<xs:annotation>
+			<xs:documentation>预受理订单属性</xs:documentation>
+		</xs:annotation>
+		<xs:all>
+			<xs:element name="preOrderAttrId" type="xs:long" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>预受理订单属性ID</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="preOrderId" type="xs:long" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>预受理订单ID</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="attrId" type="xs:long">
+				<xs:annotation>
+					<xs:documentation>属性Id</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="attrValueId" type="xs:long" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>属性值ID</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="attrValue" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>属性值</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:all>
+	</xs:complexType>
+</xs:schema>

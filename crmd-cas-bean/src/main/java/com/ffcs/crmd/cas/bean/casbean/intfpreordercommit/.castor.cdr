@@ -1,0 +1,6 @@
+#Thu Mar 31 10:19:17 CST 2016
+com.ffcs.crmd.cas.bean.casbean.intfpreordercommit.IntfPreOrder=com.ffcs.crmd.cas.bean.casbean.intfpreordercommit.descriptors.IntfPreOrderDescriptor
+com.ffcs.crmd.cas.bean.casbean.intfpreordercommit.InParam=com.ffcs.crmd.cas.bean.casbean.intfpreordercommit.descriptors.InParamDescriptor
+com.ffcs.crmd.cas.bean.casbean.intfpreordercommit.Root=com.ffcs.crmd.cas.bean.casbean.intfpreordercommit.descriptors.RootDescriptor
+com.ffcs.crmd.cas.bean.casbean.intfpreordercommit.MsgBody=com.ffcs.crmd.cas.bean.casbean.intfpreordercommit.descriptors.MsgBodyDescriptor
+com.ffcs.crmd.cas.bean.casbean.intfpreordercommit.OutParam=com.ffcs.crmd.cas.bean.casbean.intfpreordercommit.descriptors.OutParamDescriptor

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<design xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="crm.xsd">
+	<!-- custint -->
+	<file name="comm.xsd" description="" package="com.ffcs.crmd.cas.bean.devops.comm"/>
+	<file name="qryPreSaleOrderProc.xsd" description="" package="com.ffcs.crmd.cas.bean.devops.qryPreSaleOrderProc"/>
+	<file name="qryPreSaleOrderOverTimeList.xsd" description="" package="com.ffcs.crmd.cas.bean.devops.qryPreSaleOrderOverTimeList"/>
+</design>

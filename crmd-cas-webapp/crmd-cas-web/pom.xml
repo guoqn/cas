@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.ffcs.crmd.cas</groupId>
+		<artifactId>crmd-cas-webapp</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>crmd-cas-web</artifactId>
+	<packaging>war</packaging>
+	<name>crmd-cas-web Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+	<dependencies>
+		<!-- 集中受理 -->
+		<dependency>
+			<groupId>com.ffcs.crmd.cas</groupId>
+			<artifactId>crmd-cas-order-control</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.ffcs.crmd.cas</groupId>
+			<artifactId>crmd-cas-sys-control</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.ffcs.crmd.cas</groupId>
+			<artifactId>crmd-cas-intf-control</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.ffcs.crmd.cas</groupId>
+			<artifactId>crmd-cas-config</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<!-- dubbo 本机运行时注释，同时注释web.xml相关dubbo扫描-->
+		<dependency>
+			<groupId>com.ffcs.crmd.platform</groupId>
+			<artifactId>crmd-platform-dubbo-api</artifactId>
+		</dependency>
+
+		<!-- 本机打开注释 -->
+		<!--<dependency> <groupId>com.ffcs.crmd.cas</groupId> <artifactId>crmd-cas-order-facade</artifactId>
+			<version>${project.version}</version> </dependency> -->
+		<!-- 公共模块（登录，菜单权限等） -->
+		<dependency>
+			<groupId>com.ffcs.crmd.cas</groupId>
+			<artifactId>crmd-cas-sys-facade</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<!-- 鹰眼监控 -->
+		<dependency>
+			<groupId>com.ffcs.crmd.devops</groupId>
+			<artifactId>crmd-devops-eagleeye-agent</artifactId>
+			<version>0.0.7-SNAPSHOT</version>
+			<exclusions>
+				<exclusion>
+					<groupId>ch.qos.logback</groupId>
+					<artifactId>logback-classic</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>ch.qos.logback</groupId>
+					<artifactId>logback-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.ffcs.crmd.devops</groupId>
+			<artifactId>crmd-devops-eagleeye-sp-adapter</artifactId>
+			<version>0.0.7-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>crmd-cas-web</finalName>
+		<outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

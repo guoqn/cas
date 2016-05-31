@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd"
+	default-lazy-init="false">
+	<bean id="traceContextUtil"  class="com.ffcs.trace.TraceContextUtil"  lazy-init="false" />
+ 
+	<context:component-scan base-package="com.ffcs.trace.*" />
+ 
+  	<aop:config proxy-target-class="true">  
+  		<aop:advisor id="trackFacade" advice-ref="ayncTrackInterceptor"
+			pointcut="${eagleeye.advisor}" />  
+	</aop:config>
+
+	<!-- 拦截器配置 -->
+	<bean id="ayncTrackInterceptor" class="com.ffcs.crmd.devops.eagleeye.agent.interceptor.TrackInterceptor" >
+		<property name="trackHandler" ref="trackHandler"/>
+	</bean>
+	
+	<!-- trackManager配置 :包括同步和异步二种 -->
+	<bean id="syncTrackManager" class="com.ffcs.crmd.devops.eagleeye.agent.mgr.impl.DefaultTrackManagerImpl">
+		<property name = "recordTracker" ref="ctgMqRecordTracker" />
+	</bean>
+	<!-- 取样TrackManager配置 -->
+	<bean id="sampledTrackManager" class="com.ffcs.crmd.devops.eagleeye.agent.mgr.impl.SampledTrackManagerImpl" >
+		<property name = "trackManager" ref="syncTrackManager" />
+		<property name = "modBit" value="${sample.modBit}" />
+		<property name = "sampleOpen" value="${sample.open}" />
+	</bean>
+	
+	<!-- recordTracker配置 -->
+	
+	<!-- trackListRecorder配置 -->
+	<bean id="syncTrackListRecorder" class="com.ffcs.crmd.devops.eagleeye.agent.mgr.impl.DefaultTrackListRecorder" >
+		<property name = "producer" ref="eagleeyeProducer" ></property>
+		<property name = "bufferSize" value = "${buffer.size}"></property>
+		<property name = "bufferOpen" value = "${buffer.open}"></property>
+		<property name="serializer" ref= "kryoSerializer"></property>
+	</bean>
+	
+	<bean id="asyncTrackListRecorder" class= "com.ffcs.crmd.devops.eagleeye.agent.mgr.impl.AsyncTrackListRecorder" >
+		<property name = "trackListRecorder" ref = "syncTrackListRecorder" />
+	</bean>
+	<!-- 鹰眼轨迹核心控制器配置 -->
+	<bean id="trackHandler" class="com.ffcs.crmd.devops.eagleeye.agent.TrackHandler" >
+		<property name="configManager" ref="configManager" />
+		<property name="trackListRecorder" ref="asyncTrackListRecorder" />
+		<property name="sampledTrackManager" ref="sampledTrackManager" />
+	</bean>
+	<!-- 鹰眼配置 -->
+	<bean id="configManager" class="com.ffcs.crmd.devops.eagleeye.agent.config.ConfigManager" >
+		<property name="open" value="${eagleeye.open}"/>
+		<property name="appcode" value="${eagleeye.appcode}" />
+	</bean>
+    
+	<!-- 分离部署过滤器配置 -->
+	<bean id="trackContextServer" class="com.ffcs.crmd.devops.eagleeye.sp.adapter.filter.TrackContextServer">
+		<property name="trackHandler" ref="trackHandler"></property>
+	</bean>
+
+</beans>

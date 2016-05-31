@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mapper>
+	<sql id="qryOrg" type="xml"> 
+	<![CDATA[     
+	   <dataSqlNode>
+           <type>sqltext</type>
+           <sqltext>
+			select c.org_id,
+			       c.common_region_id,
+			       c.parent_org_id,
+			       c.org_type,
+			       c.org_content,
+			       c.org_scale,
+			       c.principal,
+			       c.org_name,
+			       c.org_name_en,
+			       c.org_code,
+			       c.area_code,
+			       c.status_cd,
+			       c.status_date,
+			       c.create_date,
+			       c.update_date,
+			       c.org_duty,
+			       c.area_id,
+			       c.region_cd,
+			       c.update_staff,
+			       c.create_staff,
+			       c.town_flag,
+			       c.org_sub_type,
+			       c.org_level,
+			       c.org_sort,
+			       c.party_id,
+			       c.ctg_channel_nbr,
+			       c.group_org_id,
+			       c.group_org_code,
+			       c.channel_type,
+			       c.staff_id
+			  from organization c where 
+ 		</sqltext>     
+            <dataSqlNode>
+               <type>param</type>
+               <sqltext> and c.org_name like ?</sqltext> 
+               <paramTag>org_name</paramTag>
+           </dataSqlNode>
+           <dataSqlNode>
+               <type>param</type>
+               <sqltext> and c.org_id = ?</sqltext>
+               <paramTag>org_id</paramTag>
+           </dataSqlNode>
+           <dataSqlNode>
+               <type>param</type>
+               <sqltext> and c.parent_org_id = ?</sqltext>
+               <paramTag>parent_org_id</paramTag>
+           </dataSqlNode>
+           <dataSqlNode>
+               <type>param</type>
+               <sqltext> and c.org_id in </sqltext>
+               <paramTag>orgIds</paramTag>
+           </dataSqlNode>
+       </dataSqlNode>
+	]]>  
+  </sql>
+	<!-- 根据团队名称查询团队 -->
+	<!-- <select id="qryOrgByOrgId">
+		<![CDATA[select c.org_id,
+       c.common_region_id,
+       c.parent_org_id,
+       c.org_type,
+       c.org_content,
+       c.org_scale,
+       c.principal,
+       c.org_name,
+       c.org_name_en,
+       c.org_code,
+       c.area_code,
+       c.status_cd,
+       c.status_date,
+       c.create_date,
+       c.update_date,
+       c.org_duty,
+       c.area_id,
+       c.region_cd,
+       c.update_staff,
+       c.create_staff,
+       c.town_flag,
+       c.org_sub_type,
+       c.org_level,
+       c.org_sort,
+       c.party_id,
+       c.ctg_channel_nbr,
+       c.group_org_id,
+       c.group_org_code,
+       c.channel_type,
+       c.staff_id
+  from organization c
+ where c.org_id = ?]]>
+	</select>
+	<select id="qryOrgByParentId">
+		<![CDATA[select c.org_id,
+       c.common_region_id,
+       c.parent_org_id,
+       c.org_type,
+       c.org_content,
+       c.org_scale,
+       c.principal,
+       c.org_name,
+       c.org_name_en,
+       c.org_code,
+       c.area_code,
+       c.status_cd,
+       c.status_date,
+       c.create_date,
+       c.update_date,
+       c.org_duty,
+       c.area_id,
+       c.region_cd,
+       c.update_staff,
+       c.create_staff,
+       c.town_flag,
+       c.org_sub_type,
+       c.org_level,
+       c.org_sort,
+       c.party_id,
+       c.ctg_channel_nbr,
+       c.group_org_id,
+       c.group_org_code,
+       c.channel_type,
+       c.staff_id
+  from organization c
+ where c.org_name like ?]]>
+	</select>
+	<select id="qryOrgByOrgName">
+		<![CDATA[select c.org_id,
+       c.common_region_id,
+       c.parent_org_id,
+       c.org_type,
+       c.org_content,
+       c.org_scale,
+       c.principal,
+       c.org_name,
+       c.org_name_en,
+       c.org_code,
+       c.area_code,
+       c.status_cd,
+       c.status_date,
+       c.create_date,
+       c.update_date,
+       c.org_duty,
+       c.area_id,
+       c.region_cd,
+       c.update_staff,
+       c.create_staff,
+       c.town_flag,
+       c.org_sub_type,
+       c.org_level,
+       c.org_sort,
+       c.party_id,
+       c.ctg_channel_nbr,
+       c.group_org_id,
+       c.group_org_code,
+       c.channel_type,
+       c.staff_id
+  from organization c
+ where c.parent_org_id = ?]]>
+	</select> -->
+
+	<sql id="qryOrgPosition" type="xml">
+		<![CDATA[
+	   <dataSqlNode>
+           <type>sqltext</type>
+           <sqltext>
+			select b.org_id,
+			       b.common_region_id,
+			       b.parent_org_id,
+			       b.org_type,
+			       b.org_content,
+			       b.org_scale,
+			       b.principal,
+			       b.org_name,
+			       b.org_name_en,
+			       b.org_code,
+			       b.area_code,
+			       b.status_cd,
+			       b.status_date,
+			       b.create_date,
+			       b.update_date,
+			       b.org_duty,
+			       b.area_id,
+			       b.region_cd,
+			       b.update_staff,
+			       b.create_staff,
+			       b.town_flag,
+			       b.org_sub_type,
+			       b.org_level,
+			       b.org_sort,
+			       b.party_id,
+			       b.ctg_channel_nbr,
+			       b.group_org_id,
+			       b.group_org_code,
+			       b.channel_type,
+			       b.staff_id
+			  from Organization b,
+			  	   Staff_Position a,
+			  	   Position c
+			  	   where a.org_id = b.org_id
+			  	   and a.position_id = c.position_id
+			  	   and c.position_sort = '11'
+				   and a.status_cd = '1000'
+			       and b.status_cd = '1000'
+ 		</sqltext>
+            <dataSqlNode>
+               <type>param</type>
+               <sqltext> and a.staff_id = ?</sqltext>
+               <paramTag>staff_id</paramTag>
+           </dataSqlNode>
+       </dataSqlNode>
+	]]>
+	</sql>
+	
+	<!-- 预受理团队查询 -->
+	<sql id="qryOrganizaztionPageInfoByIdsAndParams" type="xml"> 
+	<![CDATA[     
+	   <dataSqlNode>
+           <type>sqltext</type>
+           <sqltext>
+			select t.org_id,
+			       t.common_region_id,
+			       t.parent_org_id,
+			       t.org_type,
+			       t.org_content,
+			       t.org_scale,
+			       t.principal,
+			       t.org_name,
+			       t.org_name_en,
+			       t.org_code,
+			       t.area_code,
+			       t.status_cd,
+			       t.status_date,
+			       t.create_date,
+			       t.update_date,
+			       t.org_duty,
+			       t.area_id,
+			       t.region_cd,
+			       t.update_staff,
+			       t.create_staff,
+			       t.town_flag,
+			       t.org_sub_type,
+			       t.org_level,
+			       t.org_sort,
+			       t.party_id,
+			       t.ctg_channel_nbr,
+			       t.group_org_id,
+			       t.group_org_code,
+			       t.channel_type,
+			       t.staff_id
+			  from (
+ 		</sqltext>
+            <dataSqlNode>
+               <type>param</type>
+               <sqltext> select org.* from organization org where 1 = 1 and org.org_id in </sqltext>
+               <paramTag>orgAssignOrg</paramTag>
+           </dataSqlNode>
+           <dataSqlNode>
+               <type>param</type>
+               <sqltext> and 1=?  UNION ALL </sqltext>
+               <paramTag>unionAll_1</paramTag>
+           </dataSqlNode>
+           <dataSqlNode>
+               <type>param</type>
+               <sqltext> select org.* from organization org where 1 = 1 and exists (
+               		select 1 from common_region cr where 1=1 and cr.common_region_id = org.common_region_id 
+               		and cr.common_region_id in 
+               </sqltext> 
+               <paramTag>c3AssignOrg</paramTag>
+               <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and 1=? )</sqltext>
+                    <paramTag>C3AssignOrgStart</paramTag>
+               </dataSqlNode>
+               <dataSqlNode>
+               		<type>param</type>
+               		<sqltext> and not exists (select 1 from common_region cr1 where 1=1 
+               			and cr1.common_region_id = org.common_region_id and cr1.common_region_id in 
+               		</sqltext>
+               		<paramTag>notInC4AssignOrg</paramTag>
+               		<dataSqlNode>
+                    	<type>param</type>
+                    	<sqltext> and 1=? ) </sqltext>
+                    	<paramTag>notInC4AssignOrgEnd</paramTag>
+               		</dataSqlNode>
+           		</dataSqlNode>
+           		<dataSqlNode>
+               			<type>param</type>
+               			<sqltext> and org.org_id not in </sqltext>
+               			<paramTag>notInOrgAssignOrg</paramTag>
+           			</dataSqlNode>
+           		<dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and 1=? )</sqltext>
+                    <paramTag>C3AssignOrgEnd</paramTag>
+               </dataSqlNode>
+           </dataSqlNode>
+           <dataSqlNode>
+               <type>param</type>
+               <sqltext> and 1=? UNION ALL </sqltext>
+               <paramTag>unionAll_2</paramTag>
+           </dataSqlNode>
+           <dataSqlNode>
+               <type>param</type>
+               <sqltext> select org.* from organization org where 1 = 1 and exists (
+               		select 1 from common_region cr where 1=1 and cr.common_region_id = org.common_region_id 
+               		and cr.common_region_id in 
+               	</sqltext> 
+               <paramTag>c4AssignOrg</paramTag>
+               <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and 1=? ) </sqltext>
+                    <paramTag>c4AssignOrgStart</paramTag>
+               </dataSqlNode>
+               <dataSqlNode>
+               		<type>param</type>
+               		<sqltext> and org.org_id not in </sqltext>
+               		<paramTag>notInOrgAssignOrg2</paramTag>
+           		</dataSqlNode>
+           </dataSqlNode>
+           <dataSqlNode>
+                <type>sqltext</type>
+                <sqltext> ) t where t.status_cd = 1000 </sqltext>
+           </dataSqlNode>
+           <dataSqlNode>
+                <type>param</type>
+               	<sqltext> and t.org_Type = ? </sqltext>
+               	<paramTag>orgType</paramTag>
+           </dataSqlNode>
+           <dataSqlNode>
+                <type>param</type>
+               	<sqltext> and lower(t.org_Name) like ? </sqltext>
+               	<paramTag>orgName</paramTag>
+           </dataSqlNode>
+       </dataSqlNode>
+	]]>  
+  </sql>
+</mapper>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<msgHead>
+		<time>20160301101615</time>
+		<from>CRM</from>
+		<to>CAS</to>
+		<sysSign/>
+		<msgType>queryCustOrder</msgType>
+		<serial>20140813002308011933</serial>
+	</msgHead>
+	<msgBody>
+		<outParam>
+			<result>0</result>
+			<customerOrderHis>
+				<customerOrderId>149369086</customerOrderId>
+				<custSoNumber>FJ2013072342539901</custSoNumber>
+				<statusCd>300000</statusCd>
+				<statusCdName>竣工</statusCdName>
+				<custName>郭仕钗</custName>
+				<createDate>2013-03-23</createDate>
+			</customerOrderHis>
+			<customerOrderHis>
+				<customerOrderId>149369088</customerOrderId>
+				<custSoNumber>FJ2013072342539903</custSoNumber>
+				<statusCd>401200</statusCd>
+				<statusCdName>已撤单</statusCdName>
+				<custName>郭仕钗</custName>
+				<createDate>2013-07-23</createDate>
+			</customerOrderHis>
+		</outParam>
+	</msgBody>
+</root>

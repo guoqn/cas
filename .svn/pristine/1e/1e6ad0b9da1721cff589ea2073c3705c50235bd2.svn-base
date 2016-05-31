@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.ffcs.crmd.cas</groupId>
+		<artifactId>crmd-cas-kernel</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>crmd-cas-core-facade</artifactId>
+	<name>crmd-cas-core-facade</name>
+	<url>http://maven.apache.org</url>
+	<dependencies>
+		<dependency>
+			<groupId>com.ffcs.crmd.cas</groupId>
+			<artifactId>crmd-cas-core-api</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ffcs.crmd.cas</groupId>
+			<artifactId>crmd-cas-core-service</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ffcs.crmd.platform</groupId>
+			<artifactId>crmd-platform-core-ddd-facade</artifactId>
+		</dependency>
+	</dependencies>
+</project>

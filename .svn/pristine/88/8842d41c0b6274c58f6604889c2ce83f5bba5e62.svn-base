@@ -1,0 +1,11 @@
+.btn-default2 {
+   background:url(../img/search.png) no-repeat right;
+ }
+.comp-btn {
+   cursor: pointer !important;
+   background-color: #FFFFFF ;
+}
+.dateTime-btn {
+    cursor: pointer !important;
+    background-color: #FFFFFF !important;
+}

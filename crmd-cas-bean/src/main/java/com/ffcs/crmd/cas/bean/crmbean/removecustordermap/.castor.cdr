@@ -1,0 +1,5 @@
+#Tue Feb 16 15:51:44 CST 2016
+com.ffcs.crmd.cas.bean.crmbean.removecustordermap.MsgBody=com.ffcs.crmd.cas.bean.crmbean.removecustordermap.descriptors.MsgBodyDescriptor
+com.ffcs.crmd.cas.bean.crmbean.removecustordermap.OutParam=com.ffcs.crmd.cas.bean.crmbean.removecustordermap.descriptors.OutParamDescriptor
+com.ffcs.crmd.cas.bean.crmbean.removecustordermap.Root=com.ffcs.crmd.cas.bean.crmbean.removecustordermap.descriptors.RootDescriptor
+com.ffcs.crmd.cas.bean.crmbean.removecustordermap.InParam=com.ffcs.crmd.cas.bean.crmbean.removecustordermap.descriptors.InParamDescriptor

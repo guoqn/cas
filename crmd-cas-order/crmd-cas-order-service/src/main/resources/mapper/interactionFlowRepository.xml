@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mapper>
+    <sql id="queryFlowByName" type="xml">
+        <![CDATA[
+            <dataSqlNode>
+                <type>sqltext</type>
+                <sqltext>
+                    SELECT
+                        F.INTERACTION_FLOW_ID,F.INTERACTION_FLOW_NAME,F.CUST_ITEM_TYPE_GROUP,F.EVENT_CD,F.STATE_CD,F.ASSIGN_MODE,F.REMARK,F.STATUS_CD,F.STATUS_DATE,F.CREATE_DATE,F.UPDATE_DATE,F.AREA_ID,F.REGION_CD,F.UPDATE_STAFF,F.CREATE_STAFF
+                    FROM
+                        interaction_flow f
+                     where
+                </sqltext>
+                <dataSqlNode>
+                    <type>like</type>
+                    <sqltext> and f.INTERACTION_FLOW_NAME LIKE ?</sqltext>
+                    <paramTag>interactionFlowName</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and f.AREA_ID in (
+                                SELECT
+                                    common_region_id
+                                FROM
+                                    common_region ur
+                                WHERE
+                                    ur.common_region_id = ?
+                                UNION ALL
+                                    SELECT
+                                        common_region_id
+                                    FROM
+                                        common_region dr
+                                    WHERE
+                                        dr.UP_REGION_ID = ?
+                              )
+                    </sqltext>
+                    <paramTag>areaId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> </sqltext>
+                    <paramTag>areaId</paramTag>
+                </dataSqlNode>
+            </dataSqlNode>
+        ]]>
+    </sql>
+</mapper>

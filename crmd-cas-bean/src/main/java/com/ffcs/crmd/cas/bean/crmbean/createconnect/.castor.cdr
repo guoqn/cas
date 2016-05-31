@@ -1,0 +1,7 @@
+#Mon Apr 18 16:53:27 CST 2016
+com.ffcs.crmd.cas.bean.crmbean.createconnect.CustOrder=com.ffcs.crmd.cas.bean.crmbean.createconnect.descriptors.CustOrderDescriptor
+com.ffcs.crmd.cas.bean.crmbean.createconnect.InParam=com.ffcs.crmd.cas.bean.crmbean.createconnect.descriptors.InParamDescriptor
+com.ffcs.crmd.cas.bean.crmbean.createconnect.ConnectInfo=com.ffcs.crmd.cas.bean.crmbean.createconnect.descriptors.ConnectInfoDescriptor
+com.ffcs.crmd.cas.bean.crmbean.createconnect.MsgBody=com.ffcs.crmd.cas.bean.crmbean.createconnect.descriptors.MsgBodyDescriptor
+com.ffcs.crmd.cas.bean.crmbean.createconnect.OutParam=com.ffcs.crmd.cas.bean.crmbean.createconnect.descriptors.OutParamDescriptor
+com.ffcs.crmd.cas.bean.crmbean.createconnect.Root=com.ffcs.crmd.cas.bean.crmbean.createconnect.descriptors.RootDescriptor

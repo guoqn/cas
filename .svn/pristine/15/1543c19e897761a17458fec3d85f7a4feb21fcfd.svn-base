@@ -1,0 +1,6 @@
+#Wed Apr 06 17:10:47 CST 2016
+com.ffcs.crmd.cas.bean.casbean.query.queryReturnList.Root=com.ffcs.crmd.cas.bean.casbean.query.queryReturnList.descriptors.RootDescriptor
+com.ffcs.crmd.cas.bean.casbean.query.queryReturnList.ReturnInfo=com.ffcs.crmd.cas.bean.casbean.query.queryReturnList.descriptors.ReturnInfoDescriptor
+com.ffcs.crmd.cas.bean.casbean.query.queryReturnList.OutParam=com.ffcs.crmd.cas.bean.casbean.query.queryReturnList.descriptors.OutParamDescriptor
+com.ffcs.crmd.cas.bean.casbean.query.queryReturnList.InParam=com.ffcs.crmd.cas.bean.casbean.query.queryReturnList.descriptors.InParamDescriptor
+com.ffcs.crmd.cas.bean.casbean.query.queryReturnList.MsgBody=com.ffcs.crmd.cas.bean.casbean.query.queryReturnList.descriptors.MsgBodyDescriptor

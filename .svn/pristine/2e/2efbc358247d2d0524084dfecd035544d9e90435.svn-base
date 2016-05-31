@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- edited with XMLSpy v2013 (http://www.altova.com) by  () -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://www.chinatelecom.com/crm/comm/" xmlns:ns1="http://www.chinatelecom.com/crm/preSaleOrder/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.chinatelecom.com/crm/comm/" schemaLocation="comm.xsd"/>
+	<xs:element name="root">
+		<xs:annotation>
+			<xs:documentation>根节点</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="msgHead" type="ns2:msgHead">
+					<xs:annotation>
+						<xs:documentation>消息头</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="msgBody"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="msgBody">
+		<xs:annotation>
+			<xs:documentation>消息体</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="inParam"/>
+				<xs:element ref="outParam"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="inParam">
+		<xs:annotation>
+			<xs:documentation>请求信息</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="acceptOrgId" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>团队</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="areaId" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>本地网</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="staffId" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>员工</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="beginTime" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>开始时间</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="endTime" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>结束时间</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="outParam">
+		<xs:annotation>
+			<xs:documentation>响应信息</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element name="result" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>处理结果
+0：成功
+1：失败</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="error" type="ns2:error" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>错误信息</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="preSaleOrderDetail" type="preSaleOrderDetail" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="preSaleOrderDetail">
+		<xs:annotation>
+			<xs:documentation>处理过程信息</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="preOrderNumber" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>p单号</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="poolStaffId" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>工单认领人</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="poolStaffName" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>认领人名称</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="statusCd" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>工单完成标识:poolStatusCd=12000</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="poolAcceptDate" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>工单认领时间</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="poolStatusDate" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>最后受理时间</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="poolCreateDate" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

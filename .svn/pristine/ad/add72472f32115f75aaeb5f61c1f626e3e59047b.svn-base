@@ -1,0 +1,1244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mapper>
+	<sql id="queryPreSaleOrder" type="xml">
+        <![CDATA[
+            <dataSqlNode>
+                <type>sqltext</type>
+                <sqltext>
+                    SELECT
+                        PSO.PRE_ORDER_ID,PSO.CUSTOMER_INTERACTION_EVENT_ID,PSO.STAFF_ID,PSO.CUST_ID,PSO.PRE_ORDER_NUMBER,PSO.SCENE_TYPE,PSO.LOCKED_STATUS,PSO.LOCKED_STAFF,PSO.LOCKED_TIME,PSO.ORDER_TYPE,PSO.HANDLE_PEOPLE_NAME,PSO.PRIORITY,PSO.ACCEPT_TIME,PSO.LAN_ID,PSO.REMARK,PSO.PRE_HANDLE_FLAG,PSO.BOOK_TIME,PSO.CHANNEL_D,PSO.ORG_ID,PSO.ORDER_FROM,PSO.EXT_CUST_ORDER_ID,PSO.IF_END,PSO.SEQ,PSO.PROD_TYPE,PSO.ACTION_TYPE,PSO.SERVICE_TYPE,PSO.STATUS_CD,PSO.STATUS_DATE,PSO.AREA_ID,PSO.REGION_CD,PSO.CREATE_DATE,PSO.CREATE_STAFF,PSO.UPDATE_DATE,PSO.UPDATE_STAFF,PSO.SHARDING_ID,PSO.DVERSION,PSO.DTIMESTAMP,PSO.BATCH_AMOUNT,PSO.CUST_SO_NUMBER,PSO.CUST_NAME,PSO.MOBILE_PHONE,PSO.PRE_ORDER_SRC
+                    FROM
+                        pre_sale_order pso
+                     where
+                </sqltext>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pso.PRE_ORDER_NUMBER = ? </sqltext>
+                    <paramTag>preOrderNumber</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pso.ACCEPT_TIME &gt;= STR_TO_DATE(?,'%Y-%m-%d %H:%i:%s') </sqltext>
+                    <paramTag>beginTime</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pso.ACCEPT_TIME &lt;= STR_TO_DATE(?,'%Y-%m-%d %H:%i:%s')</sqltext>
+                    <paramTag>endTime</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pso.REGION_CD in </sqltext>
+                    <paramTag>commonRegionIds</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and PSO.STAFF_ID = ? </sqltext>
+                    <paramTag>staffId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and PSO.ORG_ID = ? </sqltext>
+                    <paramTag>orgId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and PSO.STATUS_CD = ? </sqltext>
+                    <paramTag>statusCd</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pso.SEQ = ? </sqltext>
+                    <paramTag>seq</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pso.pre_order_id = ? </sqltext>
+                    <paramTag>preOrderId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pso.ext_cust_order_id = ? </sqltext>
+                    <paramTag>extCustOrderId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pso.cust_so_number = ? </sqltext>
+                    <paramTag>custSoNumber</paramTag>
+                </dataSqlNode>
+            </dataSqlNode>
+        ]]>
+	</sql>
+
+	<sql id="queryPreSaleOrderProc" type="xml">
+        <![CDATA[
+            <dataSqlNode>
+                <type>sqltext</type>
+                <sqltext>
+                    SELECT
+                        PRE_SALE_ORDER_PROC_ID,PRE_ORDER_ID,CUSTOMER_INTERACTION_EVENT_ID,STAFF_ID,HANDLE_PEOPLE_NAME,ACCEPT_TIME,LAN_ID,REMARK,REAL_CUST_SO_NUMBER,STATUS_CD,STATUS_DATE,AREA_ID,REGION_CD,CREATE_DATE,CREATE_STAFF,UPDATE_DATE,UPDATE_STAFF,DVERSION,DTIMESTAMP,SHARDING_ID
+                    FROM
+                        pre_sale_order_proc where
+                </sqltext>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pre_order_id = ? </sqltext>
+                    <paramTag>preOrderId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and sharding_id = ? </sqltext>
+                    <paramTag>shardingId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>sqltext</type>
+                    <sqltext> order by accept_time desc </sqltext>
+                </dataSqlNode>
+            </dataSqlNode>
+        ]]>
+	</sql>
+
+	<sql id="queryPreSaleOrderProcWithAttr" type="xml">
+        <![CDATA[
+            <dataSqlNode>
+                <type>sqltext</type>
+                <sqltext>
+                    SELECT
+                        P.PRE_SALE_ORDER_PROC_ID,P.PRE_ORDER_ID,P.CUSTOMER_INTERACTION_EVENT_ID,P.STAFF_ID,P.HANDLE_PEOPLE_NAME,P.ACCEPT_TIME,P.LAN_ID,IFNULL(a.ATTR_DESC, p.REMARK) REMARK,P.REAL_CUST_SO_NUMBER,P.STATUS_CD,P.STATUS_DATE,P.AREA_ID,P.REGION_CD,P.CREATE_DATE,P.CREATE_STAFF,P.UPDATE_DATE,P.UPDATE_STAFF,P.DVERSION,P.DTIMESTAMP,P.SHARDING_ID
+                    FROM
+                        pre_sale_order_proc p
+                    LEFT JOIN
+						pre_sale_order_proc_attr a ON p.PRE_SALE_ORDER_PROC_ID = a.PRE_SALE_ORDER_PROC_ID
+					where
+                </sqltext>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and p.pre_order_id = ? </sqltext>
+                    <paramTag>preOrderId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and p.sharding_id = ? </sqltext>
+                    <paramTag>shardingId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>sqltext</type>
+                    <sqltext> order by p.accept_time desc </sqltext>
+                </dataSqlNode>
+            </dataSqlNode>
+        ]]>
+	</sql>
+
+	<sql id="queryPreSaleAcctItem" type="xml">
+        <![CDATA[
+            <dataSqlNode>
+                <type>sqltext</type>
+                <sqltext>
+                    SELECT
+                        PRE_ACCT_ITEM_ID,PRE_ORDER_ID,PRE_ORDER_ITEM_ID,ACCT_ITEM_TYPE,ACCT_SO_NUMBER,STATUS_CD,STATUS_DATE,AREA_ID,REGION_CD,CREATE_DATE,CREATE_STAFF,UPDATE_DATE,UPDATE_STAFF,DVERSION,DTIMESTAMP,SHARDING_ID
+                    FROM
+                        pre_sale_acct_item where
+                </sqltext>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pre_order_id = ? </sqltext>
+                    <paramTag>preOrderId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and sharding_id = ? </sqltext>
+                    <paramTag>shardingId</paramTag>
+                </dataSqlNode>
+            </dataSqlNode>
+        ]]>
+	</sql>
+	<sql id="queryPreSaleAcctItemAttr" type="xml">
+        <![CDATA[
+            <dataSqlNode>
+                <type>sqltext</type>
+                <sqltext>
+                    SELECT
+                        PRE_ACCT_ITEM_ATTR_ID,PRE_ACCT_ITEM_ID,ATTR_ID,ATTR_VALUE_ID,ATTR_VALUE,AREA_ID,REGION_CD,CREATE_DATE,CREATE_STAFF,UPDATE_DATE,UPDATE_STAFF,STATUS_CD,STATUS_DATE,DVERSION,DTIMESTAMP,SHARDING_ID
+                    FROM
+                        pre_sale_acct_item_attr where
+                </sqltext>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pre_acct_item_id = ? </sqltext>
+                    <paramTag>preAcctItemId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and sharding_id = ? </sqltext>
+                    <paramTag>shardingId</paramTag>
+                </dataSqlNode>
+            </dataSqlNode>
+        ]]>
+	</sql>
+
+	<sql id="queryPreSaleOrderProcAttr" type="xml">
+        <![CDATA[
+            <dataSqlNode>
+                <type>sqltext</type>
+                <sqltext>
+                    SELECT
+                        PRE_ORDER_PROC_ATTR_ID,PRE_SALE_ORDER_PROC_ID,ATTR_ID,ATTR_VALUE_ID,ATTR_VALUE,ATTR_DESC,STATUS_CD,STATUS_DATE,CREATE_DATE,AREA_ID,REGION_CD,CREATE_STAFF,UPDATE_DATE,UPDATE_STAFF,DVERSION,DTIMESTAMP,SHARDING_ID
+                    FROM
+                        pre_sale_order_proc_attr where
+                </sqltext>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pre_sale_order_proc_id = ? </sqltext>
+                    <paramTag>preSaleOrderProcId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and sharding_id = ? </sqltext>
+                    <paramTag>shardingId</paramTag>
+                </dataSqlNode>
+            </dataSqlNode>
+        ]]>
+	</sql>
+
+	<!-- 查询工单池 -->
+	<sql id="queryPreSaleOrderPool" type="xml">
+        <![CDATA[
+            <dataSqlNode>
+                <type>sqltext</type>
+                <sqltext>
+                    SELECT
+                        PRE_SALE_ORDER_POOL_ID,CUST_ORDER_ID,STAFF_ID,REMARK,VERSION,IS_LEADER_ASSIGN,ACCEPT_DATE,PRE_ORDER_ID,ORG_ID,ACCEPT_ORG_ID,SCENE_TYPE,PRIORITY,SERVICE_TYPE,CREATE_STAFF,AREA_ID,REGION_CD,STATUS_CD,STATUS_DATE,CREATE_DATE,UPDATE_DATE,UPDATE_STAFF,SHARDING_ID,DVERSION,DTIMESTAMP,IFNULL(priority, 99) as PRI_ORDER,PRE_ORDER_SRC
+                    FROM
+                        pre_sale_order_pool where
+                </sqltext>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pre_order_id = ? </sqltext>
+                    <paramTag>preOrderId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and sharding_id = ? </sqltext>
+                    <paramTag>shardingId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and status_cd in </sqltext>
+                    <paramTag>statusCdList</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and staff_id = ? </sqltext>
+                    <paramTag>staffId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and area_id = ? </sqltext>
+                    <paramTag>areaId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and region_cd = ? </sqltext>
+                    <paramTag>regionCd</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and org_id = ? </sqltext>
+                    <paramTag>orgId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and create_staff = ? </sqltext>
+                    <paramTag>createStaff</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and status_cd = ? </sqltext>
+                    <paramTag>statusCd</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and status_cd in </sqltext>
+                    <paramTag>statusCdList</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and create_date &gt;= STR_TO_DATE(?,'%Y-%m-%d %H:%i:%s') </sqltext>
+                    <paramTag>beginTime</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and create_date &lt;= STR_TO_DATE(?,'%Y-%m-%d %H:%i:%s') </sqltext>
+                    <paramTag>endTime</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pre_order_id in </sqltext>
+                    <paramTag>preSaleOrderIds</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and scene_type in </sqltext>
+                    <paramTag>sceneTypeList</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and scene_type in </sqltext>
+                    <paramTag>sceneTypes</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and status_cd != ? </sqltext>
+                    <paramTag>notStatusCd</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and org_id in </sqltext>
+                    <paramTag>orgAssinOrg</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and area_id in </sqltext>
+                    <paramTag>c3AssignOrg</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and region_cd not in </sqltext>
+                    <paramTag>notInC4AssignOrg</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and org_id not in </sqltext>
+                    <paramTag>notInOrgAssignOrg</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and region_cd in </sqltext>
+                    <paramTag>c4AssignOrg</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and service_type = ? </sqltext>
+                    <paramTag>serviceType</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pre_order_src = ? </sqltext>
+                    <paramTag>preOrderSrc</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and accept_org_id = ? </sqltext>
+                    <paramTag>acceptOrgId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>sqltext</type>
+                    <sqltext> order by pri_order, is_leader_assign desc,create_date</sqltext>
+                </dataSqlNode>
+            </dataSqlNode>
+        ]]>
+	</sql>
+
+	<sql id="queryAutoGenOrder" type="xml">
+        <![CDATA[
+            <dataSqlNode>
+                <type>sqltext</type>
+                <sqltext>
+                    SELECT
+                        AUTO_GEN_ORDER_ID,PRE_SALE_ORDER,SCENE_TYPE,SCENE_FLAG,PROD_OFFER_ID,ACC_NBR,CUST_ID,RESULT,SEND_DATE,RECEIVE_DATE,ERR_CODE,AREA_ID,REGION_CD,STATUS_CD,STATUS_DATE,CREATE_DATE,CREATE_STAFF,UPDATE_STAFF,UPDATE_DATE,DVERSION,DTIMESTAMP,SHARDING_ID
+                    FROM
+                        auto_gen_order
+                    where
+                </sqltext>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and PRE_SALE_ORDER = ? </sqltext>
+                    <paramTag>preSaleOrder</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and STATUS_CD = ? </sqltext>
+                    <paramTag>statusCd</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and PRE_SALE_ORDER = ? </sqltext>
+                    <paramTag>preSaleOrder</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and MOD(auto_gen_order_id, ?) = ? </sqltext>
+                    <paramTag>modelCount</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> </sqltext>
+                    <paramTag>model</paramTag>
+                </dataSqlNode>
+            </dataSqlNode>
+        ]]>
+	</sql>
+
+	<sql id="queryAutoGenOrderSentPk" type="xml">
+        <![CDATA[
+            <dataSqlNode>
+                <type>sqltext</type>
+                <sqltext>
+                    SELECT
+                        AGO.AUTO_GEN_ORDER_ID,AGO.PRE_SALE_ORDER,AGO.SCENE_TYPE,AGO.SCENE_FLAG,AGO.PROD_OFFER_ID,AGO.ACC_NBR,AGO.CUST_ID,AGO.RESULT,AGO.SEND_DATE,AGO.RECEIVE_DATE,AGO.ERR_CODE,AGO.AREA_ID,AGO.REGION_CD,AGO.STATUS_CD,AGO.STATUS_DATE,AGO.CREATE_DATE,AGO.CREATE_STAFF,AGO.UPDATE_STAFF,AGO.UPDATE_DATE,AGO.DVERSION,AGO.DTIMESTAMP,AGO.SHARDING_ID
+                    FROM
+                        auto_gen_order ago
+                    WHERE
+                        ago.status_cd = ?
+                    AND MOD (ago.auto_gen_order_id, ?) = ?
+                    AND EXISTS (
+                        SELECT
+                            1
+                        FROM
+                            pre_sale_order pso,
+                            pre_sale_order_pool ps
+                        WHERE
+                            pso.pre_order_number = ago.pre_sale_order
+                        AND pso.pre_order_id = ps.pre_order_id
+                        AND pso.seq = ?
+                        AND (
+                            ps.staff_id IS NULL
+                            OR ps.staff_id = ?
+                        )
+                        AND pso.status_cd = ?
+                    )
+                </sqltext>
+            </dataSqlNode>
+        ]]>
+	</sql>
+
+	<sql id="queryISaleAcctItem" type="xml">
+        <![CDATA[
+            <dataSqlNode>
+                <type>sqltext</type>
+                <sqltext>
+                    SELECT
+                        ISALE_ACCT_ITEM_ID,SALE_SERIAL,EXT_ACCT_ITEM_ID,REAL_AMOUNT,STATUS_CD,STATUS_DATE,CREATE_DATE,AREA_ID,REGION_CD,CREATE_STAFF,UPDATE_DATE,UPDATE_STAFF,DVERSION,DTIMESTAMP,SHARDING_ID
+                    FROM
+                        isale_acct_item
+                    where
+                </sqltext>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and sale_serial = ? </sqltext>
+                    <paramTag>saleSerial</paramTag>
+                </dataSqlNode>
+            </dataSqlNode>
+        ]]>
+	</sql>
+
+	<sql id="queryPreOrderItem" type="xml">
+        <![CDATA[
+            <dataSqlNode>
+                <type>sqltext</type>
+                <sqltext>
+                    SELECT
+                        PRE_ORDER_ITEM_ID,PRE_ORDER_ID,ORDER_ITEM_CD,PRIORITY,PRE_HANDLE_FLAG,CLASS_ID,HANDLE_TIME,ORDER_ITEM_OBJ_TYPE,ORDER_ITEM_OBJ_ID,SERVICE_OFFER_ID,REASON,STATUS_CHANGE_REASON,REMARK,ATTR_ID,JAVA_CODE,ATTR_VALUE,SUPER_ITEM_ID,ATTR_PARAM2,STATUS_CD,STATUS_DATE,AREA_ID,REGION_CD,CREATE_DATE,CREATE_STAFF,UPDATE_DATE,UPDATE_STAFF,SHARDING_ID,DVERSION,DTIMESTAMP
+                    FROM
+                        pre_sale_order_item
+                    where
+                </sqltext>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pre_order_id = ? </sqltext>
+                    <paramTag>preOrderId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and sharding_id = ? </sqltext>
+                    <paramTag>shardingId</paramTag>
+                </dataSqlNode>
+            </dataSqlNode>
+        ]]>
+	</sql>
+
+	<sql id="queryPreSaleOrderAttr" type="xml">
+        <![CDATA[
+            <dataSqlNode>
+                <type>sqltext</type>
+                <sqltext>
+                    SELECT
+                        PRE_ORDER_ATTR_ID,PRE_ORDER_ID,ATTR_ID,ATTR_VALUE_ID,ATTR_VALUE,AREA_ID,REGION_CD,CREATE_DATE,CREATE_STAFF,UPDATE_DATE,UPDATE_STAFF,STATUS_CD,STATUS_DATE,SHARDING_ID,DVERSION,DTIMESTAMP
+                    FROM
+                        pre_sale_order_attr
+                    where
+                </sqltext>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pre_order_id = ? </sqltext>
+                    <paramTag>preOrderId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and sharding_id = ? </sqltext>
+                    <paramTag>shardingId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and attr_id = ? </sqltext>
+                    <paramTag>attrId</paramTag>
+                </dataSqlNode>
+            </dataSqlNode>
+        ]]>
+	</sql>
+
+	<sql id="queryLastBackProcAttr" type="xml">
+        <![CDATA[
+            <dataSqlNode>
+                <type>sqltext</type>
+                <sqltext>
+                    SELECT
+                        ppa.PRE_ORDER_PROC_ATTR_ID,
+                        ppa.PRE_SALE_ORDER_PROC_ID,
+                        ppa.ATTR_ID,ATTR_VALUE_ID,
+                        ppa.ATTR_VALUE,
+                        ppa.ATTR_DESC,
+                        ppa.STATUS_CD,
+                        ppa.STATUS_DATE,
+                        ppa.CREATE_DATE,
+                        ppa.AREA_ID,
+                        ppa.REGION_CD,
+                        ppa.CREATE_STAFF,
+                        ppa.UPDATE_DATE,
+                        ppa.UPDATE_STAFF,
+                        ppa.DVERSION,
+                        ppa.DTIMESTAMP,
+                        ppa.SHARDING_ID
+                    FROM
+                        pre_sale_order_proc_attr ppa,pre_sale_order_proc pp
+                      where ppa.pre_sale_order_proc_id = pp.pre_sale_order_proc_id
+                        and pp.customer_interaction_event_id in (1008,1009)
+                </sqltext>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pp.pre_order_id = ? </sqltext>
+                    <paramTag>preOrderId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and ppa.attr_id = ? </sqltext>
+                    <paramTag>attrId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and ppa.sharding_id = ? </sqltext>
+                    <paramTag>shardingId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>append</type>
+                    <sqltext> order by pp.create_date desc </sqltext>
+                </dataSqlNode>
+            </dataSqlNode>
+        ]]>
+	</sql>
+
+
+	<sql id="queryPreSaleOrderHis" type="xml">
+        <![CDATA[
+            <dataSqlNode>
+                <type>sqltext</type>
+                <sqltext>
+                    SELECT
+                        PSO.HIS_ID,PSO.PRE_ORDER_ID,PSO.CUSTOMER_INTERACTION_EVENT_ID,PSO.STAFF_ID,PSO.CUST_ID,PSO.PRE_ORDER_NUMBER,PSO.SCENE_TYPE,PSO.LOCKED_STATUS,PSO.LOCKED_STAFF,PSO.LOCKED_TIME,PSO.ORDER_TYPE,PSO.HANDLE_PEOPLE_NAME,PSO.PRIORITY,PSO.ACCEPT_TIME,PSO.LAN_ID,PSO.REMARK,PSO.PRE_HANDLE_FLAG,PSO.BOOK_TIME,PSO.CHANNEL_D,PSO.ORG_ID,PSO.ORDER_FROM,PSO.EXT_CUST_ORDER_ID,PSO.IF_END,PSO.SEQ,PSO.PROD_TYPE,PSO.ACTION_TYPE,PSO.SERVICE_TYPE,PSO.STATUS_CD,PSO.STATUS_DATE,PSO.AREA_ID,PSO.REGION_CD,PSO.CREATE_DATE,PSO.CREATE_STAFF,PSO.UPDATE_DATE,PSO.UPDATE_STAFF,PSO.SHARDING_ID,PSO.DVERSION,PSO.DTIMESTAMP,PSO.BATCH_AMOUNT,PSO.CUST_SO_NUMBER,PSO.CUST_NAME,PSO.MOBILE_PHONE,PSO.PRE_ORDER_SRC
+                    FROM
+                        pre_sale_order_his pso
+                     where
+                </sqltext>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pso.PRE_ORDER_NUMBER = ? </sqltext>
+                    <paramTag>preOrderNumber</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pso.SEQ = ? </sqltext>
+                    <paramTag>seq</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and ext_cust_order_id = ? </sqltext>
+                    <paramTag>extCustOrderId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pre_order_id = ? </sqltext>
+                    <paramTag>preOrderId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and sharding_id = ? </sqltext>
+                    <paramTag>shardingId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and cust_so_number = ? </sqltext>
+                    <paramTag>custSoNumber</paramTag>
+                </dataSqlNode>
+            </dataSqlNode>
+        ]]>
+	</sql>
+
+	<sql id="queryLastBackProcAttrHis" type="xml">
+        <![CDATA[
+            <dataSqlNode>
+                <type>sqltext</type>
+                <sqltext>
+                    SELECT
+                        ppa.his_id,
+                        ppa.PRE_ORDER_PROC_ATTR_ID,
+                        ppa.PRE_SALE_ORDER_PROC_ID,
+                        ppa.ATTR_ID,ATTR_VALUE_ID,
+                        ppa.ATTR_VALUE,
+                        ppa.ATTR_DESC,
+                        ppa.STATUS_CD,
+                        ppa.STATUS_DATE,
+                        ppa.CREATE_DATE,
+                        ppa.AREA_ID,
+                        ppa.REGION_CD,
+                        ppa.CREATE_STAFF,
+                        ppa.UPDATE_DATE,
+                        ppa.UPDATE_STAFF,
+                        ppa.DVERSION,
+                        ppa.DTIMESTAMP,
+                        ppa.SHARDING_ID
+                    FROM
+                        pre_sale_order_proc_attr_his ppa,pre_sale_order_proc_his pp
+                      where ppa.pre_sale_order_proc_id = pp.pre_sale_order_proc_id
+                        and pp.customer_interaction_event_id in (1008,1009)
+                </sqltext>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pp.pre_order_id = ? </sqltext>
+                    <paramTag>preOrderId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and ppa.attr_id = ? </sqltext>
+                    <paramTag>attrId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and ppa.sharding_id = ? </sqltext>
+                    <paramTag>shardingId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>append</type>
+                    <sqltext> order by pp.create_date desc </sqltext>
+                </dataSqlNode>
+            </dataSqlNode>
+        ]]>
+	</sql>
+
+	<sql id="queryISaleAcctItemAttr" type="xml">
+        <![CDATA[
+            <dataSqlNode>
+                <type>sqltext</type>
+                <sqltext>
+                    SELECT
+                        PRE_ACCT_ITEM_ATTR_ID,PRE_ACCT_ITEM_ID,ATTR_ID,ATTR_VALUE_ID,ATTR_VALUE,AREA_ID,REGION_CD,CREATE_DATE,CREATE_STAFF,UPDATE_DATE,UPDATE_STAFF,STATUS_CD,STATUS_DATE,DVERSION,DTIMESTAMP,SHARDING_ID
+                    FROM
+                        pre_sale_acct_item_attr where
+                    where
+                </sqltext>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pre_acct_item_id = ? </sqltext>
+                    <paramTag>preAcctItemId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and sharding_id = ? </sqltext>
+                    <paramTag>shardingId</paramTag>
+                </dataSqlNode>
+            </dataSqlNode>
+        ]]>
+	</sql>
+
+	<sql id="queryOrderOverTimeStat" type="xml">
+        <![CDATA[
+            <dataSqlNode>
+                <type>sqltext</type>
+                <sqltext>
+                    /*sqlb*/
+					/*mysqlb*/SELECT
+											staff_id,
+											sum(IF(STATUS_CD = '200099', 1, 0)) waitDealCount,
+											sum(IF(STATUS_CD = '201400', 1, 0)) partDealCount
+										FROM
+											pre_sale_order p
+										WHERE
+											seq = '1'
+										AND staff_id IS NOT NULL
+										AND DATEDIFF(now(), p.CREATE_DATE) > 1
+										AND status_cd IN ('200099', '201400')
+										AND MOD (STAFF_ID, ?) = ?
+										GROUP BY
+											staff_id/*mysqle*/
+					/*oracleb*/SELECT
+						staff_id,
+						sum(DECODE(STATUS_CD,'200099', 1, 0)) waitDealCount,
+						sum(DECODE(STATUS_CD,'201400', 1, 0)) partDealCount
+					FROM
+						pre_sale_order p
+					WHERE
+						seq = '1'
+					AND staff_id IS NOT NULL
+					AND SYSDATE- p.CREATE_DATE > 1
+					AND status_cd IN ('200099', '201400')
+					AND MOD (STAFF_ID, ?) = ?
+					GROUP BY
+						staff_id /*oraclee*//*sqle*/
+                </sqltext>
+            </dataSqlNode>
+        ]]>
+	</sql>
+
+	<sql id="queryIntfOrder" type="xml">
+        <![CDATA[
+            <dataSqlNode>
+                <type>sqltext</type>
+                <sqltext>
+                    SELECT
+                        INTF_PRE_ORDER_ID,PRE_ORDER_NUMBER,CHANNEL_NBR,TEXT_TYPE,DEAL_NUM,NEXT_DEAL_TIME,ERR_MSG,REMARK,STATUS_CD,STATUS_DATE,CREATE_DATE,UPDATE_DATE,AREA_ID,REGION_CD,UPDATE_STAFF,CREATE_STAFF,DVERSION,DTIMESTAMP,SHARDING_ID
+                    FROM
+                        intf_pre_order
+                    where
+                </sqltext>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and status_cd in </sqltext>
+                    <paramTag>statusCdList</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and MOD (INTF_PRE_ORDER_ID, ?) = ? </sqltext>
+                    <paramTag>procCount</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext>  </sqltext>
+                    <paramTag>model</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and NEXT_DEAL_TIME &lt; STR_TO_DATE(?,'%Y-%m-%d %H:%i:%s') </sqltext>
+                    <paramTag>nextDealTimeEnd</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and DEAL_NUM &lt; ? </sqltext>
+                    <paramTag>dealNumEnd</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and INTF_PRE_ORDER_ID &lt; ? </sqltext>
+                    <paramTag>intfPreOrderIdEnd</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and PRE_ORDER_NUMBER = ? </sqltext>
+                    <paramTag>preOrderNumber</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> limit ? </sqltext>
+                    <paramTag>perSize</paramTag>
+                </dataSqlNode>
+            </dataSqlNode>
+        ]]>
+	</sql>
+	<sql id="getLastCustOrderIdByPreOrderNbr" type="xml">
+        <![CDATA[
+            <dataSqlNode>
+                <type>sqltext</type>
+                <sqltext>
+                    SELECT
+                        PSO.PRE_ORDER_ID,PSO.CUSTOMER_INTERACTION_EVENT_ID,PSO.STAFF_ID,PSO.CUST_ID,PSO.PRE_ORDER_NUMBER,PSO.SCENE_TYPE,PSO.LOCKED_STATUS,PSO.LOCKED_STAFF,PSO.LOCKED_TIME,PSO.ORDER_TYPE,PSO.HANDLE_PEOPLE_NAME,PSO.PRIORITY,PSO.ACCEPT_TIME,PSO.LAN_ID,PSO.REMARK,PSO.PRE_HANDLE_FLAG,PSO.BOOK_TIME,PSO.CHANNEL_D,PSO.ORG_ID,PSO.ORDER_FROM,PSO.EXT_CUST_ORDER_ID,PSO.IF_END,PSO.SEQ,PSO.PROD_TYPE,PSO.ACTION_TYPE,PSO.SERVICE_TYPE,PSO.STATUS_CD,PSO.STATUS_DATE,PSO.AREA_ID,PSO.REGION_CD,PSO.CREATE_DATE,PSO.CREATE_STAFF,PSO.UPDATE_DATE,PSO.UPDATE_STAFF,PSO.SHARDING_ID,PSO.DVERSION,PSO.DTIMESTAMP,PSO.BATCH_AMOUNT,PSO.CUST_SO_NUMBER,PSO.CUST_NAME,PSO.MOBILE_PHONE,PSO.PRE_ORDER_SRC
+                    FROM
+                        pre_sale_order pso
+                     where
+                </sqltext>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pso.PRE_ORDER_NUMBER = ? </sqltext>
+                    <paramTag>preOrderNumber</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>append</type>
+                    <sqltext> and pso.seq is not null order by pso.seq desc </sqltext>
+                </dataSqlNode>
+            </dataSqlNode>
+        ]]>
+	</sql>
+	<!-- 查询工单池 -->
+	<sql id="queryPreSaleOrderPoolHis" type="xml">
+        <![CDATA[
+            <dataSqlNode>
+                <type>sqltext</type>
+                <sqltext>
+                    SELECT
+                        HIS_ID,PRE_SALE_ORDER_POOL_ID,CUST_ORDER_ID,STAFF_ID,REMARK,VERSION,IS_LEADER_ASSIGN,ACCEPT_DATE,PRE_ORDER_ID,ORG_ID,ACCEPT_ORG_ID,SCENE_TYPE,PRIORITY,SERVICE_TYPE,CREATE_STAFF,AREA_ID,REGION_CD,STATUS_CD,STATUS_DATE,CREATE_DATE,UPDATE_DATE,UPDATE_STAFF,SHARDING_ID,DVERSION,DTIMESTAMP,IFNULL(priority, 99) as PRI_ORDER,PRE_ORDER_SRC
+                    FROM
+                        pre_sale_order_pool_his where
+                </sqltext>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pre_order_id = ? </sqltext>
+                    <paramTag>preOrderId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and ext_cust_order_id = ? </sqltext>
+                    <paramTag>extCustOrderId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and sharding_id = ? </sqltext>
+                    <paramTag>shardingId</paramTag>
+                </dataSqlNode>
+            </dataSqlNode>
+        ]]>
+	</sql>
+
+	<sql id="queryPreSaleOrderAttrHis" type="xml">
+        <![CDATA[
+            <dataSqlNode>
+                <type>sqltext</type>
+                <sqltext>
+                    SELECT
+                        HIS_ID,PRE_ORDER_ATTR_ID,PRE_ORDER_ID,ATTR_ID,ATTR_VALUE_ID,ATTR_VALUE,AREA_ID,REGION_CD,CREATE_DATE,CREATE_STAFF,UPDATE_DATE,UPDATE_STAFF,STATUS_CD,STATUS_DATE,SHARDING_ID,DVERSION,DTIMESTAMP
+                    FROM
+                        pre_sale_order_attr_his
+                    where
+                </sqltext>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pre_order_id = ? </sqltext>
+                    <paramTag>preOrderId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and sharding_id = ? </sqltext>
+                    <paramTag>shardingId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and attr_id = ? </sqltext>
+                    <paramTag>attrId</paramTag>
+                </dataSqlNode>
+            </dataSqlNode>
+        ]]>
+	</sql>
+
+	<sql id="queryPreSaleOrderProcHis" type="xml">
+        <![CDATA[
+            <dataSqlNode>
+                <type>sqltext</type>
+                <sqltext>
+                    SELECT
+                        HIS_ID,PRE_SALE_ORDER_PROC_ID,PRE_ORDER_ID,CUSTOMER_INTERACTION_EVENT_ID,STAFF_ID,HANDLE_PEOPLE_NAME,ACCEPT_TIME,LAN_ID,REMARK,REAL_CUST_SO_NUMBER,STATUS_CD,STATUS_DATE,AREA_ID,REGION_CD,CREATE_DATE,CREATE_STAFF,UPDATE_DATE,UPDATE_STAFF,DVERSION,DTIMESTAMP,SHARDING_ID
+                    FROM
+                        pre_sale_order_proc_his where
+                </sqltext>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pre_order_id = ? </sqltext>
+                    <paramTag>preOrderId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and sharding_id = ? </sqltext>
+                    <paramTag>shardingId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>sqltext</type>
+                    <sqltext> order by accept_time desc </sqltext>
+                </dataSqlNode>
+            </dataSqlNode>
+        ]]>
+	</sql>
+
+	<sql id="queryCompleteOrderAuto" type="xml">
+        <![CDATA[
+            <dataSqlNode>
+                <type>sqltext</type>
+                <sqltext>
+                    SELECT
+                       PSO.PRE_ORDER_ID,PSO.CUSTOMER_INTERACTION_EVENT_ID,PSO.STAFF_ID,PSO.CUST_ID,PSO.PRE_ORDER_NUMBER,PSO.SCENE_TYPE,PSO.LOCKED_STATUS,PSO.LOCKED_STAFF,PSO.LOCKED_TIME,PSO.ORDER_TYPE,PSO.HANDLE_PEOPLE_NAME,PSO.PRIORITY,PSO.ACCEPT_TIME,PSO.LAN_ID,PSO.REMARK,PSO.PRE_HANDLE_FLAG,PSO.BOOK_TIME,PSO.CHANNEL_D,PSO.ORG_ID,PSO.ORDER_FROM,PSO.EXT_CUST_ORDER_ID,PSO.IF_END,PSO.SEQ,PSO.PROD_TYPE,PSO.ACTION_TYPE,PSO.SERVICE_TYPE,PSO.STATUS_CD,PSO.STATUS_DATE,PSO.AREA_ID,PSO.REGION_CD,PSO.CREATE_DATE,PSO.CREATE_STAFF,PSO.UPDATE_DATE,PSO.UPDATE_STAFF,PSO.SHARDING_ID,PSO.DVERSION,PSO.DTIMESTAMP,PSO.BATCH_AMOUNT,PSO.CUST_SO_NUMBER,PSO.CUST_NAME,PSO.MOBILE_PHONE,PSO.PRE_ORDER_SRC
+                    FROM
+                        pre_sale_order pso
+                    WHERE
+                        pso.seq = 1
+                    AND EXISTS (
+                        SELECT
+                            1
+                        FROM
+                            pre_sale_order_pool ps
+                        WHERE
+                            ps.PRE_ORDER_ID = pso.pre_order_id
+                        AND ps.STATUS_CD = '12000'
+                    )
+                </sqltext>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and MOD (pso.pre_order_id, ?) = ? </sqltext>
+                    <paramTag>procCount</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> </sqltext>
+                    <paramTag>model</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and DATEDIFF(now(),STATUS_DATE) &lt;= ?</sqltext>
+                    <paramTag>diffDate</paramTag>
+                </dataSqlNode>
+            </dataSqlNode>
+        ]]>
+	</sql>
+	<sql id="queryReturnList" type="xml">
+        <![CDATA[
+            <dataSqlNode>
+                <type>sqltext</type>
+                <sqltext>
+                    SELECT
+                        PSO.PRE_ORDER_ID,PSO.CUSTOMER_INTERACTION_EVENT_ID,PSO.STAFF_ID,PSO.CUST_ID,PSO.PRE_ORDER_NUMBER,PSO.SCENE_TYPE,PSO.LOCKED_STATUS,PSO.LOCKED_STAFF,PSO.LOCKED_TIME,PSO.ORDER_TYPE,PSO.HANDLE_PEOPLE_NAME,PSO.PRIORITY,PSO.ACCEPT_TIME,PSO.LAN_ID,PSO.REMARK,PSO.PRE_HANDLE_FLAG,PSO.BOOK_TIME,PSO.CHANNEL_D,PSO.ORG_ID,PSO.ORDER_FROM,PSO.EXT_CUST_ORDER_ID,PSO.IF_END,PSO.SEQ,PSO.PROD_TYPE,PSO.ACTION_TYPE,PSO.SERVICE_TYPE,PSO.STATUS_CD,PSO.STATUS_DATE,PSO.AREA_ID,PSO.REGION_CD,PSO.CREATE_DATE,PSO.CREATE_STAFF,PSO.UPDATE_DATE,PSO.UPDATE_STAFF,PSO.SHARDING_ID,PSO.DVERSION,PSO.DTIMESTAMP,PSO.BATCH_AMOUNT,PSO.CUST_SO_NUMBER,PSO.CUST_NAME,PSO.MOBILE_PHONE,PSO.PRE_ORDER_SRC
+                    FROM
+                        pre_sale_order pso,
+                        pre_sale_order_proc p,
+                        pre_sale_order_proc_attr a
+                    WHERE
+                        pso.pre_order_id = p.pre_order_id
+                    AND p.pre_sale_order_proc_id = a.pre_sale_order_proc_id
+                    AND a.attr_id = 950022696
+                    AND pso.seq = 1
+                    AND EXISTS (
+                        SELECT
+                            1
+                        FROM
+                            Pre_Sale_Order_Pool ps
+                        WHERE
+                            ps.pre_order_id = pso.pre_order_id
+                        AND ps.status_cd = '15000'
+                    )
+                </sqltext>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pso.staff_id = ? </sqltext>
+                    <paramTag>saleStaffId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pso.org_id = ?</sqltext>
+                    <paramTag>saleOrgId</paramTag>
+                </dataSqlNode>
+            </dataSqlNode>
+        ]]>
+	</sql>
+
+	<sql id="queryCompleteGroupOrderAuto" type="xml">
+        <![CDATA[
+            <dataSqlNode>
+                <type>sqltext</type>
+                <sqltext>
+                    SELECT
+                        PSO.PRE_ORDER_ID,PSO.CUSTOMER_INTERACTION_EVENT_ID,PSO.STAFF_ID,PSO.CUST_ID,PSO.PRE_ORDER_NUMBER,PSO.SCENE_TYPE,PSO.LOCKED_STATUS,PSO.LOCKED_STAFF,PSO.LOCKED_TIME,PSO.ORDER_TYPE,PSO.HANDLE_PEOPLE_NAME,PSO.PRIORITY,PSO.ACCEPT_TIME,PSO.LAN_ID,PSO.REMARK,PSO.PRE_HANDLE_FLAG,PSO.BOOK_TIME,PSO.CHANNEL_D,PSO.ORG_ID,PSO.ORDER_FROM,PSO.EXT_CUST_ORDER_ID,PSO.IF_END,PSO.SEQ,PSO.PROD_TYPE,PSO.ACTION_TYPE,PSO.SERVICE_TYPE,PSO.STATUS_CD,PSO.STATUS_DATE,PSO.AREA_ID,PSO.REGION_CD,PSO.CREATE_DATE,PSO.CREATE_STAFF,PSO.UPDATE_DATE,PSO.UPDATE_STAFF,PSO.SHARDING_ID,PSO.DVERSION,PSO.DTIMESTAMP,PSO.BATCH_AMOUNT,PSO.CUST_SO_NUMBER,PSO.CUST_NAME,PSO.MOBILE_PHONE,PSO.PRE_ORDER_SRC
+                    FROM
+						pre_sale_order pso,
+						pre_sale_order_attr psoa
+					WHERE
+						pso.pre_order_id = psoa.pre_order_id
+					AND pso.PRE_HANDLE_FLAG = '3'
+					AND pso.seq = 1
+					AND psoa.attr_id = 950026467
+					AND psoa.attr_value IS NOT NULL
+                </sqltext>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and MOD (pso.pre_order_id, ?) = ? </sqltext>
+                    <paramTag>procCount</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> </sqltext>
+                    <paramTag>model</paramTag>
+                </dataSqlNode>
+            </dataSqlNode>
+        ]]>
+	</sql>
+	<sql id="getPreOrderByDevStaffAndDevTeam" type="xml">
+        <![CDATA[
+            <dataSqlNode>
+                <type>sqltext</type>
+                <sqltext>
+                    SELECT
+                        PSO.PRE_ORDER_ID,PSO.CUSTOMER_INTERACTION_EVENT_ID,PSO.STAFF_ID,PSO.CUST_ID,PSO.PRE_ORDER_NUMBER,PSO.SCENE_TYPE,PSO.LOCKED_STATUS,PSO.LOCKED_STAFF,PSO.LOCKED_TIME,PSO.ORDER_TYPE,PSO.HANDLE_PEOPLE_NAME,PSO.PRIORITY,PSO.ACCEPT_TIME,PSO.LAN_ID,PSO.REMARK,PSO.PRE_HANDLE_FLAG,PSO.BOOK_TIME,PSO.CHANNEL_D,PSO.ORG_ID,PSO.ORDER_FROM,PSO.EXT_CUST_ORDER_ID,PSO.IF_END,PSO.SEQ,PSO.PROD_TYPE,PSO.ACTION_TYPE,PSO.SERVICE_TYPE,PSO.STATUS_CD,PSO.STATUS_DATE,PSO.AREA_ID,PSO.REGION_CD,PSO.CREATE_DATE,PSO.CREATE_STAFF,PSO.UPDATE_DATE,PSO.UPDATE_STAFF,PSO.SHARDING_ID,PSO.DVERSION,PSO.DTIMESTAMP,PSO.BATCH_AMOUNT,PSO.CUST_SO_NUMBER,PSO.CUST_NAME,PSO.MOBILE_PHONE,PSO.PRE_ORDER_SRC
+                    FROM
+                        pre_sale_order pso
+                    WHERE
+                        pso.seq = 1
+                </sqltext>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pso.staff_id = ? </sqltext>
+                    <paramTag>saleStaffId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pso.org_id = ?</sqltext>
+                    <paramTag>saleOrgId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pso.accept_time &gt;= STR_TO_DATE(?,'%Y-%m-%d %H:%i:%s') </sqltext>
+                    <paramTag>beginDate</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pso.accept_time  &lt;= STR_TO_DATE(?,'%Y-%m-%d %H:%i:%s') </sqltext>
+                    <paramTag>endDate</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pso.status_cd = ? </sqltext>
+                    <paramTag>statusCd</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>sqltext</type>
+                    <sqltext> order by pso.status_cd desc, pso.accept_time desc </sqltext>
+                </dataSqlNode>
+            </dataSqlNode>
+        ]]>
+	</sql>
+	<sql id="getHisPreOrderByDevStaffAndDevTeam" type="xml">
+        <![CDATA[
+            <dataSqlNode>
+                <type>sqltext</type>
+                <sqltext>
+                    SELECT
+                        PSO.HIS_ID,PSO.PRE_ORDER_ID,PSO.CUSTOMER_INTERACTION_EVENT_ID,PSO.STAFF_ID,PSO.CUST_ID,PSO.PRE_ORDER_NUMBER,PSO.SCENE_TYPE,PSO.LOCKED_STATUS,PSO.LOCKED_STAFF,PSO.LOCKED_TIME,PSO.ORDER_TYPE,PSO.HANDLE_PEOPLE_NAME,PSO.PRIORITY,PSO.ACCEPT_TIME,PSO.LAN_ID,PSO.REMARK,PSO.PRE_HANDLE_FLAG,PSO.BOOK_TIME,PSO.CHANNEL_D,PSO.ORG_ID,PSO.ORDER_FROM,PSO.EXT_CUST_ORDER_ID,PSO.IF_END,PSO.SEQ,PSO.PROD_TYPE,PSO.ACTION_TYPE,PSO.SERVICE_TYPE,PSO.STATUS_CD,PSO.STATUS_DATE,PSO.AREA_ID,PSO.REGION_CD,PSO.CREATE_DATE,PSO.CREATE_STAFF,PSO.UPDATE_DATE,PSO.UPDATE_STAFF,PSO.SHARDING_ID,PSO.DVERSION,PSO.DTIMESTAMP,PSO.BATCH_AMOUNT,PSO.CUST_SO_NUMBER,PSO.CUST_NAME,PSO.MOBILE_PHONE,PSO.PRE_ORDER_SRC
+                    FROM
+                        pre_sale_order_his pso
+                    WHERE
+                        pso.seq = 1
+                </sqltext>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pso.staff_id = ? </sqltext>
+                    <paramTag>saleStaffId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pso.org_id = ?</sqltext>
+                    <paramTag>saleOrgId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pso.accept_time &gt;= STR_TO_DATE(?,'%Y-%m-%d %H:%i:%s') </sqltext>
+                    <paramTag>beginDate</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pso.accept_time  &lt;= STR_TO_DATE(?,'%Y-%m-%d %H:%i:%s') </sqltext>
+                    <paramTag>endDate</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pso.status_cd = ? </sqltext>
+                    <paramTag>statusCd</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>sqltext</type>
+                    <sqltext> order by pso.status_cd desc, pso.accept_time desc </sqltext>
+                </dataSqlNode>
+            </dataSqlNode>
+        ]]>
+	</sql>
+	<sql id="queryIntfPreOrder" type="xml">
+        <![CDATA[
+            <dataSqlNode>
+                <type>sqltext</type>
+                <sqltext>
+                    SELECT
+                        INTF_PRE_ORDER_ID,PRE_ORDER_NUMBER,CHANNEL_NBR,TEXT_TYPE,DEAL_NUM,NEXT_DEAL_TIME,ERR_MSG,REMARK,STATUS_CD,CREATE_DATE,UPDATE_STAFF,AREA_ID,REGION_CD,UPDATE_STAFF,CREATE_STAFF,DVERSION,DTIMESTAMP,SHARDING_ID
+                    FROM
+                        intf_pre_order where
+                </sqltext>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pre_order_number = ? </sqltext>
+                    <paramTag>preOrderNumber</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and sharding_id = ? </sqltext>
+                    <paramTag>shardingId</paramTag>
+                </dataSqlNode>
+            </dataSqlNode>
+        ]]>
+	</sql>
+	<!-- 统计1表 -->
+	<sql id="qryPreOrderStatusAndNumGroupByStatus" type="xml">
+        <![CDATA[
+            <dataSqlNode>
+                <type>sqltext</type>
+                <sqltext>
+                    SELECT
+                        pso.status_cd,count(pso.status_cd) preOrderNum
+                    FROM
+                        pre_sale_order pso
+                    WHERE
+                        pso.seq = 1
+                </sqltext>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pso.staff_id = ? </sqltext>
+                    <paramTag>saleStaffId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pso.org_id = ?</sqltext>
+                    <paramTag>saleOrgId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pso.accept_time &gt;= STR_TO_DATE(?,'%Y-%m-%d %H:%i:%s') </sqltext>
+                    <paramTag>beginDate</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pso.accept_time  &lt;= STR_TO_DATE(?,'%Y-%m-%d %H:%i:%s') </sqltext>
+                    <paramTag>endDate</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>sqltext</type>
+                    <sqltext> group by pso.status_cd  order by status_cd asc</sqltext>
+                </dataSqlNode>
+            </dataSqlNode>
+        ]]>
+	</sql>
+
+	<!-- 统计2表 -->
+	<sql id="qryHisPreOrderStatusAndNumGroupByStatus" type="xml">
+        <![CDATA[
+            <dataSqlNode>
+                <type>sqltext</type>
+                <sqltext>
+                    SELECT
+                        pso.status_cd,count(pso.status_cd) preOrderNum
+                    FROM
+                        pre_sale_order_his pso
+                    WHERE
+                        pso.seq = 1
+                </sqltext>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pso.staff_id = ? </sqltext>
+                    <paramTag>saleStaffId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pso.org_id = ?</sqltext>
+                    <paramTag>saleOrgId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pso.accept_time &gt;= STR_TO_DATE(?,'%Y-%m-%d %H:%i:%s') </sqltext>
+                    <paramTag>beginDate</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and pso.accept_time  &lt;= STR_TO_DATE(?,'%Y-%m-%d %H:%i:%s') </sqltext>
+                    <paramTag>endDate</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>sqltext</type>
+                    <sqltext> group by pso.status_cd  order by status_cd asc</sqltext>
+                </dataSqlNode>
+            </dataSqlNode>
+        ]]>
+	</sql>
+
+	<sql id="queryInitPoolRegion" type="xml">
+		<![CDATA[
+            <dataSqlNode>
+                <type>sqltext</type>
+                <sqltext>
+                    SELECT
+						*
+					FROM
+						(
+                </sqltext>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> SELECT
+								*
+							FROM
+								COMMON_REGION c3
+							where c3.common_region_id in </sqltext>
+                    <paramTag>c3AssignOrgs</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> UNION
+								SELECT
+									dcr.*
+								FROM
+									COMMON_REGION ucr,
+									COMMON_REGION dcr
+								WHERE
+									ucr.common_region_id = dcr.UP_REGION_ID
+								and ucr.common_region_id in
+					</sqltext>
+					<paramTag>c3AssignOrgs</paramTag>
+                </dataSqlNode>
+				<dataSqlNode>
+					<type>param</type>
+					<sqltext> and dcr.common_region_id NOT in </sqltext>
+					<paramTag>notInC4AssignOrgs</paramTag>
+				</dataSqlNode>
+				<dataSqlNode>
+					<type>param</type>
+					<sqltext> and 1=? UNION </sqltext>
+					<paramTag>union</paramTag>
+				</dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext>
+								SELECT
+									*
+								FROM
+									COMMON_REGION c4
+								where C4.COMMON_REGION_ID IN
+					</sqltext>
+                    <paramTag>c4AssignOrgs</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>sqltext</type>
+                    <sqltext>
+                    	) cr where 1=1
+					</sqltext>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext>
+						and cr.REGION_TYPE IN
+					</sqltext>
+					<paramTag>regionTypes</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>like</type>
+                    <sqltext> AND lower(cr.region_name) LIKE ?</sqltext>
+                    <paramTag>regionName</paramTag>
+                </dataSqlNode>
+            </dataSqlNode>
+        ]]>
+	</sql>
+</mapper>

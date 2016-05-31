@@ -1,0 +1,5 @@
+#Thu Mar 17 14:58:43 CST 2016
+com.ffcs.crmd.cas.bean.crmbean.noticetodealorder.MsgBody=com.ffcs.crmd.cas.bean.crmbean.noticetodealorder.descriptors.MsgBodyDescriptor
+com.ffcs.crmd.cas.bean.crmbean.noticetodealorder.Root=com.ffcs.crmd.cas.bean.crmbean.noticetodealorder.descriptors.RootDescriptor
+com.ffcs.crmd.cas.bean.crmbean.noticetodealorder.InParam=com.ffcs.crmd.cas.bean.crmbean.noticetodealorder.descriptors.InParamDescriptor
+com.ffcs.crmd.cas.bean.crmbean.noticetodealorder.OutParam=com.ffcs.crmd.cas.bean.crmbean.noticetodealorder.descriptors.OutParamDescriptor

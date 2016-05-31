@@ -1,0 +1,6 @@
+#Tue Mar 01 16:29:36 CST 2016
+com.ffcs.crmd.cas.bean.crmbean.autorelcustorder.IsSaleAcctItem=com.ffcs.crmd.cas.bean.crmbean.autorelcustorder.descriptors.IsSaleAcctItemDescriptor
+com.ffcs.crmd.cas.bean.crmbean.autorelcustorder.MsgBody=com.ffcs.crmd.cas.bean.crmbean.autorelcustorder.descriptors.MsgBodyDescriptor
+com.ffcs.crmd.cas.bean.crmbean.autorelcustorder.OutParam=com.ffcs.crmd.cas.bean.crmbean.autorelcustorder.descriptors.OutParamDescriptor
+com.ffcs.crmd.cas.bean.crmbean.autorelcustorder.Root=com.ffcs.crmd.cas.bean.crmbean.autorelcustorder.descriptors.RootDescriptor
+com.ffcs.crmd.cas.bean.crmbean.autorelcustorder.InParam=com.ffcs.crmd.cas.bean.crmbean.autorelcustorder.descriptors.InParamDescriptor

@@ -1,0 +1,14 @@
+#session 过期时长
+session.sessionTimeout=3600000
+#cookiename
+session.cookiename=b_sessionid
+#javascript是无法读取和修改HttpOnly cookies
+session.httpOnly=true
+#它表示创建的 cookie 只能在 HTTPS 连接中被浏览器传递到服务器端进行会话验证
+session.secure=false
+#活动扫描过期清理
+session.startLifeScan=true
+#应用的名称
+session.appcode=sys
+#redis 分组
+session.groupName=group.udal.product

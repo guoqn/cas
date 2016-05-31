@@ -1,0 +1,5 @@
+#Fri Mar 25 09:40:42 CST 2016
+com.ffcs.crmd.cas.bean.casbean.presaleorderpoolcommit.Root=com.ffcs.crmd.cas.bean.casbean.presaleorderpoolcommit.descriptors.RootDescriptor
+com.ffcs.crmd.cas.bean.casbean.presaleorderpoolcommit.InParam=com.ffcs.crmd.cas.bean.casbean.presaleorderpoolcommit.descriptors.InParamDescriptor
+com.ffcs.crmd.cas.bean.casbean.presaleorderpoolcommit.OutParam=com.ffcs.crmd.cas.bean.casbean.presaleorderpoolcommit.descriptors.OutParamDescriptor
+com.ffcs.crmd.cas.bean.casbean.presaleorderpoolcommit.MsgBody=com.ffcs.crmd.cas.bean.casbean.presaleorderpoolcommit.descriptors.MsgBodyDescriptor

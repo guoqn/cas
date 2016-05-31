@@ -1,0 +1,13 @@
+#Fri Mar 11 16:47:47 CST 2016
+com.ffcs.crmd.cas.bean.casbean.autogenorder.Product=com.ffcs.crmd.cas.bean.casbean.autogenorder.descriptors.ProductDescriptor
+com.ffcs.crmd.cas.bean.casbean.autogenorder.OptionOfferList=com.ffcs.crmd.cas.bean.casbean.autogenorder.descriptors.OptionOfferListDescriptor
+com.ffcs.crmd.cas.bean.casbean.autogenorder.OutParam=com.ffcs.crmd.cas.bean.casbean.autogenorder.descriptors.OutParamDescriptor
+com.ffcs.crmd.cas.bean.casbean.autogenorder.Payment=com.ffcs.crmd.cas.bean.casbean.autogenorder.descriptors.PaymentDescriptor
+com.ffcs.crmd.cas.bean.casbean.autogenorder.Cust=com.ffcs.crmd.cas.bean.casbean.autogenorder.descriptors.CustDescriptor
+com.ffcs.crmd.cas.bean.casbean.autogenorder.MsgBody=com.ffcs.crmd.cas.bean.casbean.autogenorder.descriptors.MsgBodyDescriptor
+com.ffcs.crmd.cas.bean.casbean.autogenorder.Root=com.ffcs.crmd.cas.bean.casbean.autogenorder.descriptors.RootDescriptor
+com.ffcs.crmd.cas.bean.casbean.autogenorder.CustomerOrder=com.ffcs.crmd.cas.bean.casbean.autogenorder.descriptors.CustomerOrderDescriptor
+com.ffcs.crmd.cas.bean.casbean.autogenorder.InParam=com.ffcs.crmd.cas.bean.casbean.autogenorder.descriptors.InParamDescriptor
+com.ffcs.crmd.cas.bean.casbean.autogenorder.FunProdList=com.ffcs.crmd.cas.bean.casbean.autogenorder.descriptors.FunProdListDescriptor
+com.ffcs.crmd.cas.bean.casbean.autogenorder.Error=com.ffcs.crmd.cas.bean.casbean.autogenorder.descriptors.ErrorDescriptor
+com.ffcs.crmd.cas.bean.casbean.autogenorder.Login=com.ffcs.crmd.cas.bean.casbean.autogenorder.descriptors.LoginDescriptor

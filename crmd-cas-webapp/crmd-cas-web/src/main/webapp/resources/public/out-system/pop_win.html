@@ -1,0 +1,84 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="pragma" content="no-cache">
+	</head>
+	<script type="text/javascript" src="utils.js"></script>
+	<script type="text/javascript" src="../../lib/jquery/jquery.min-1.11.1.js"></script>
+ 	<body>
+		<iframe id="if" height="100%" width="100%"></iframe>
+	</body>
+	<script type="text/javascript">
+	    var readSrmRet;
+	    var showtype = "dialog";
+	    var params;
+	    if(window && window.dialogArguments && window.dialogArguments != null){ // 支持Ipad open方式
+	      params = window.dialogArguments;
+	      showtype = "dialog";
+	    }
+	    else{
+	      params = window.opener.g_data;
+	      showtype = "open";
+		  readSrmRet = window.setInterval(readInfo,500);
+	    }
+		var serviceDir = "";
+		var xmlIn = "";
+		var SRMWeb = "";
+		var act = "";
+		var webUrl='';
+		if (params != undefined && params != "undefined" 
+			&& params.act != undefined && params.act != "undefined") { //post 方式
+			act = params.act;
+			if(params.outUrl){
+				SRMWeb = params.outUrl;
+			}
+			if(params.pars){
+				xmlIn = params.pars;
+			}
+			if(act == "selectYzfCard"||act=="writeCard") {
+				document.getElementById("if").src = SRMWeb+xmlIn;
+			} else{
+				if(act == "choosePHSCode") {
+					serviceDir = "manualPHSCode";
+				} else if (act == "choose3GCode") {
+					serviceDir = "configure3GCode";
+				} else if (act == "chooseUPTCode") {
+					serviceDir = "configureUPTCode";
+				}else if (act == "chooseOb3GCode") {
+					serviceDir = "configureOb3GCode";
+				} else if (act == "reserved3GCode") {
+					serviceDir = "configure3GCode";
+				}
+				document.getElementById("if").src = "out_system_page.html";
+			}
+			webUrl= SRMWeb;
+		} else { //get 方式
+			var url = GetArgsFromHrefs(location.toString(), "outSysemUrl");
+			url = decodeURIComponent(url);
+			webUrl =url;
+			document.getElementById("if").src = url;
+		}
+		
+   // ipad方式		
+   function readInfo(){
+	if(location.hash!=null&&location.hash!=""&&location.hash!="#"){
+		window.clearInterval(readSrmRet);
+		var retAddr=location.hash.substr(1);
+		if(retAddr!="_close_"){
+			retAddr=decodeURIComponent(retAddr);
+			window.opener.bind('valData', retAddr);
+		}
+		window.close();
+	}
+   }
+ $.ajax({
+   type: "POST",
+   url: "../../CrmInnerServlet",
+   dataType:"string",
+   data: "webUrl="+webUrl,
+   success: function(msg){
+    document.title=msg;
+   }
+}); 
+</script>
+</html>

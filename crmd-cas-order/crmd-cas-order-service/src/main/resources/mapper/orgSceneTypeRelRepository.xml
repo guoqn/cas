@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mapper>
+    <sql id="queryOrgSceneTypeRel" type="xml">
+        <![CDATA[
+            <dataSqlNode>
+                <type>sqltext</type>
+                <sqltext>
+                    SELECT
+                        ORG_SCENE_TYPE_REL_ID,REGION_CD,SHARDING_ID,CREATE_STAFF,UPDATE_DATE,SCENE_TYPE_NAME,AREA_ID,STATUS_DATE,ORG_ID,DTIMESTAMP,DVERSION,UPDATE_STAFF,SCENE_TYPE,STATUS_CD,CREATE_DATE
+                    FROM
+                        ORG_SCENE_TYPE_REL
+                     where
+                </sqltext>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and org_id = ?</sqltext>
+                    <paramTag>orgId</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and scene_type = ? </sqltext>
+                    <paramTag>sceneType</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and status_cd = ? </sqltext>
+                    <paramTag>statusCd</paramTag>
+                </dataSqlNode>
+                <dataSqlNode>
+                    <type>param</type>
+                    <sqltext> and area_id = ? </sqltext>
+                    <paramTag>areaId</paramTag>
+                </dataSqlNode>
+            </dataSqlNode>
+        ]]>
+    </sql>
+
+</mapper>

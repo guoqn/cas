@@ -1,0 +1,7 @@
+#Sat Apr 09 12:49:59 CST 2016
+com.ffcs.crmd.cas.bean.casbean.query.querypreorderfororder.OutParam=com.ffcs.crmd.cas.bean.casbean.query.querypreorderfororder.descriptors.OutParamDescriptor
+com.ffcs.crmd.cas.bean.casbean.query.querypreorderfororder.PreSaleOrderInfo=com.ffcs.crmd.cas.bean.casbean.query.querypreorderfororder.descriptors.PreSaleOrderInfoDescriptor
+com.ffcs.crmd.cas.bean.casbean.query.querypreorderfororder.Root=com.ffcs.crmd.cas.bean.casbean.query.querypreorderfororder.descriptors.RootDescriptor
+com.ffcs.crmd.cas.bean.casbean.query.querypreorderfororder.PreSaleOrderProc=com.ffcs.crmd.cas.bean.casbean.query.querypreorderfororder.descriptors.PreSaleOrderProcDescriptor
+com.ffcs.crmd.cas.bean.casbean.query.querypreorderfororder.InParam=com.ffcs.crmd.cas.bean.casbean.query.querypreorderfororder.descriptors.InParamDescriptor
+com.ffcs.crmd.cas.bean.casbean.query.querypreorderfororder.MsgBody=com.ffcs.crmd.cas.bean.casbean.query.querypreorderfororder.descriptors.MsgBodyDescriptor

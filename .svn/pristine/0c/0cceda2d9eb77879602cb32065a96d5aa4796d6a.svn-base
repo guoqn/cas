@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- edited with XMLSpy v2013 (http://www.altova.com) by  () -->
+<xs:schema xmlns="http://www.chinatelecom.com/crm/iSaleAcctItem/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.chinatelecom.com/crm/iSaleAcctItem/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:complexType name="iSaleAcctItem">
+		<xs:annotation>
+			<xs:documentation>集团费用项</xs:documentation>
+		</xs:annotation>
+		<xs:all>
+			<xs:element name="isaleAcctItemId" type="xs:long" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>集团费用项ID</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="saleSerial" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>P单号</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="extAcctItemCd" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>账目项类型</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="realAmount" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>账目项流水</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:all>
+	</xs:complexType>
+</xs:schema>

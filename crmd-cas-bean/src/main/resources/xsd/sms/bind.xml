@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<binding xmlns="http://www.castor.org/SourceGenerator/Binding" defaultBindingType="type"><package><name>com.ffcs.crmd.cas.bean.smsbean.comm</name><schemaLocation>comm.xsd</schemaLocation></package><package><name>com.ffcs.crmd.cas.bean.smsbean.smpost</name><schemaLocation>sm_post.xsd</schemaLocation></package></binding>

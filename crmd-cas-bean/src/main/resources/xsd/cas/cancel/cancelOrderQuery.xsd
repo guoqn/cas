@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- edited with XMLSpy v2013 (http://www.altova.com) by  () -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://www.chinatelecom.com/crm/comm/" xmlns:ns1="http://www.chinatelecom.com/crm/preSaleOrder/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.chinatelecom.com/crm/comm/" schemaLocation="../comm.xsd"/>
+	<xs:element name="root">
+		<xs:annotation>
+			<xs:documentation>根节点</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="msgHead" type="ns2:msgHead">
+					<xs:annotation>
+						<xs:documentation>消息头</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="msgBody"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="msgBody">
+		<xs:annotation>
+			<xs:documentation>消息体</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="inParam"/>
+				<xs:element ref="outParam"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="inParam">
+		<xs:annotation>
+			<xs:documentation>请求信息</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="teamId" type="xs:long">
+					<xs:annotation>
+						<xs:documentation>受理班组ID </xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="latnId">
+					<xs:annotation>
+						<xs:documentation>受理团队区域（如591）</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="5"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="staffPositionId" type="xs:long">
+					<xs:annotation>
+						<xs:documentation>当前员工任职关系标识
+字段长度： 12</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="preCustSoNum">
+					<xs:annotation>
+						<xs:documentation>预受理单号</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="30"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="outParam">
+		<xs:annotation>
+			<xs:documentation>响应信息</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="result">
+					<xs:annotation>
+						<xs:documentation>处理结果
+10：成功，FJ可以全部撤销 11：成功，只有部分FJ能撤销12：只有P单能撤销,FJ都不能撤销
+20：失败
+
+</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:length value="1"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="error" type="ns2:error" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>错误信息</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="preOrder" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>预受理单信息</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="preCustSoNum" type="xs:string">
+								<xs:annotation>
+									<xs:documentation>预受理单号</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="feeItem" type="feeItem" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>预受理单对应的费用信息</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="extCustOrderIds" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>订单id</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="customerOrder" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>客户订单信息</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="custSoNumber" type="xs:string">
+								<xs:annotation>
+									<xs:documentation>CRM客户订单流水号</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="actionList" type="xs:string">
+								<xs:annotation>
+									<xs:documentation>客户订单的动作列表，用逗号分隔</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="prodOfferInsts" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>包含主套餐、可选群组类可选包；不包含单产品可选包、可选产品</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="serviceNbr" type="xs:string" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>业务号码</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="prodOfferId" type="xs:long" minOccurs="0"/>
+										<xs:element name="prodOfferName" type="xs:string" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="prodInsts" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>只包含接入类产品即可</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="accNbr" type="xs:string" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>业务号码</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="productId" type="xs:long" minOccurs="0"/>
+										<xs:element name="productName" type="xs:string" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="cancelInfo">
+								<xs:annotation>
+									<xs:documentation>撤销信息</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="cancelFlag" type="xs:string">
+											<xs:annotation>
+												<xs:documentation>YES 可以撤销   NO 不能撤销</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="reason" type="xs:string" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>不能撤销的原因</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="acctItem" type="acctItem" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>CRM客户订单的一次性费用</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="acctItem">
+		<xs:annotation>
+			<xs:documentation>FJ单账目信息</xs:documentation>
+		</xs:annotation>
+		<xs:all>
+			<xs:element name="acctItemId" type="xs:long">
+				<xs:annotation>
+					<xs:documentation>账目标识
+字段长度： 16</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="custSoNumber">
+				<xs:annotation>
+					<xs:documentation>订单流水号,冗余节点</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="30"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="orderItemId" type="xs:long">
+				<xs:annotation>
+					<xs:documentation>订单项标识
+字段长度： 12</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="prodOfferInstId" type="xs:long">
+				<xs:annotation>
+					<xs:documentation>销售品实例标识
+字段长度： 12</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="prodOfferId" type="xs:long">
+				<xs:annotation>
+					<xs:documentation>销售品规格
+字段长度： 12</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="prodInstId" type="xs:long">
+				<xs:annotation>
+					<xs:documentation>产品实例标识
+字段长度： 12</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="accountId" type="xs:long">
+				<xs:annotation>
+					<xs:documentation>帐户标识
+字段长度： 12</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="custId" type="xs:long">
+				<xs:annotation>
+					<xs:documentation>产权客户标识
+字段长度： 12</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="acctItemTypeId" type="xs:long">
+				<xs:annotation>
+					<xs:documentation>帐目类型标识
+字段长度： 9</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="acctItemTypeName">
+				<xs:annotation>
+					<xs:documentation>帐目类型名称</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="50"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="amount" type="xs:long">
+				<xs:annotation>
+					<xs:documentation>费用（单位分）
+字段长度： 16</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="resultItemType">
+				<xs:annotation>
+					<xs:documentation>计算结果类型：
+89A－费用型
+89B－余额型
+89C－售卡费
+89D－押金缴费
+89H－转账余额型
+89J－套餐拆除失效赠送余额
+
+双方约定:
+只要返回的账目项包含89A或89D的任一记录（不管正负数或各类型间的求和值为0情况），调用缴费界面；其他情况无需调用缴费界面</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:length value="3"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="paymentMode">
+				<xs:annotation>
+					<xs:documentation>付费模式</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="6"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="regionCd" type="xs:long">
+				<xs:annotation>
+					<xs:documentation>公用管理区域标识
+字段长度： 12</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="chargeMethod" type="xs:long">
+				<xs:annotation>
+					<xs:documentation>收款方式
+字段长度：6</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="belongCycleType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>余额归属周期类型</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="3"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="belongCycleDuration" type="xs:long" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>余额归属周期偏移量
+字段长度：5</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="belongCycleQuantity" type="xs:long" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>余额归属周期数量
+字段长度：5</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="balanceEffDate" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>余额生效时间</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:length value="8"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="balanceExpDate" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>余额失效时间</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:length value="8"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="balanceSourceTypeId" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>余额来源类型</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="9"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="relaAcctItemId" type="xs:long" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>原账目标识（撤销退款必须）
+字段长度： 16</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="acctItemClass" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>账目分类</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:length value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="feeCycleId" type="xs:long" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>费用帐期
+字段长度： 9</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="monthCount" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>年缴套餐摊分月份数</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="3"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="feeItem">
+		<xs:annotation>
+			<xs:documentation>预受理费用信息</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="feeItemName" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>费用名称
+字段长度： 30</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="feeItemClass">
+				<xs:annotation>
+					<xs:documentation>费用类型分类：
+00A－不打印发票和凭单
+00B－打印凭单
+00C－打印发票</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:length value="3"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="preFeeId" type="xs:long">
+				<xs:annotation>
+					<xs:documentation>预受理账目ID</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="amount" type="xs:long">
+				<xs:annotation>
+					<xs:documentation>金额（单位分）
+字段长度： 16</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="state" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>状态  
+5SA 未销帐，
+5SB 已销账 </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="chargeMethod" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>支付方式 
+100000 现金
+140004 代办点余额支付
+150001 翼支付支付</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,8 @@
+#Mon Apr 18 16:50:48 CST 2016
+com.ffcs.crmd.cas.bean.casbean.query.preSaleOrderCount.Root=com.ffcs.crmd.cas.bean.casbean.query.preSaleOrderCount.descriptors.RootDescriptor
+com.ffcs.crmd.cas.bean.casbean.query.preSaleOrderCount.MsgBody=com.ffcs.crmd.cas.bean.casbean.query.preSaleOrderCount.descriptors.MsgBodyDescriptor
+com.ffcs.crmd.cas.bean.casbean.query.preSaleOrderCount.InParam=com.ffcs.crmd.cas.bean.casbean.query.preSaleOrderCount.descriptors.InParamDescriptor
+com.ffcs.crmd.cas.bean.casbean.query.preSaleOrderCount.OutParam=com.ffcs.crmd.cas.bean.casbean.query.preSaleOrderCount.descriptors.OutParamDescriptor
+com.ffcs.crmd.cas.bean.casbean.query.preSaleOrderCount.OrderCountInfo=com.ffcs.crmd.cas.bean.casbean.query.preSaleOrderCount.descriptors.OrderCountInfoDescriptor
+com.ffcs.crmd.cas.bean.casbean.query.preSaleOrderCount.OrderInfo=com.ffcs.crmd.cas.bean.casbean.query.preSaleOrderCount.descriptors.OrderInfoDescriptor
+com.ffcs.crmd.cas.bean.casbean.query.preSaleOrderCount.OrderNumForStatusCd=com.ffcs.crmd.cas.bean.casbean.query.preSaleOrderCount.descriptors.OrderNumForStatusCdDescriptor

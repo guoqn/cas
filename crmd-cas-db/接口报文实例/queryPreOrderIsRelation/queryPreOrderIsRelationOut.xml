@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<msgHead>
+		<time>20140813163538</time>
+		<from>CRM</from>
+		<to>HB</to>
+		<sysSign>CRM</sysSign>
+		<msgType>queryPreOrderIsRelation</msgType>
+		<serial>20140813002308011933</serial>
+	</msgHead>
+	<msgBody>
+		<outParam>
+			<result>0</result>
+			<preSaleOrder>
+				<preOrderNumber>P0000000124</preOrderNumber>
+				<orderType>102</orderType>
+				<orderFrom>600105A070</orderFrom>
+				<statusCd>101200</statusCd>
+			</preSaleOrder>
+		</outParam>
+	</msgBody>
+</root>

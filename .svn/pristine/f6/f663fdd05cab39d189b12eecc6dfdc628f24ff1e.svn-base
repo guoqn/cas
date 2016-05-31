@@ -1,0 +1,8 @@
+#Thu Mar 03 14:31:46 CST 2016
+com.ffcs.crmd.cas.bean.hbbean.prefeecancel.AcctItem=com.ffcs.crmd.cas.bean.hbbean.prefeecancel.descriptors.AcctItemDescriptor
+com.ffcs.crmd.cas.bean.hbbean.prefeecancel.Root=com.ffcs.crmd.cas.bean.hbbean.prefeecancel.descriptors.RootDescriptor
+com.ffcs.crmd.cas.bean.hbbean.prefeecancel.OrderFee=com.ffcs.crmd.cas.bean.hbbean.prefeecancel.descriptors.OrderFeeDescriptor
+com.ffcs.crmd.cas.bean.hbbean.prefeecancel.PreFee=com.ffcs.crmd.cas.bean.hbbean.prefeecancel.descriptors.PreFeeDescriptor
+com.ffcs.crmd.cas.bean.hbbean.prefeecancel.OutParam=com.ffcs.crmd.cas.bean.hbbean.prefeecancel.descriptors.OutParamDescriptor
+com.ffcs.crmd.cas.bean.hbbean.prefeecancel.InParam=com.ffcs.crmd.cas.bean.hbbean.prefeecancel.descriptors.InParamDescriptor
+com.ffcs.crmd.cas.bean.hbbean.prefeecancel.MsgBody=com.ffcs.crmd.cas.bean.hbbean.prefeecancel.descriptors.MsgBodyDescriptor

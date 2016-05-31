@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<msgHead>
+		<time>20140813163538</time>
+		<from>CRM</from>
+		<to>HB</to>
+		<sysSign>CRM</sysSign>
+		<msgType>queryCustOrder</msgType>
+		<serial>20140813002308011933</serial>
+	</msgHead>
+	<msgBody>
+		<inParam>
+			<extCustOrderId>668675780,668650000</extCustOrderId>
+			<qryType>1</qryType>
+		</inParam>
+	</msgBody>
+</root>

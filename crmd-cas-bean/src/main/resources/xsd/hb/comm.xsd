@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 wanghy (EMBRACE) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<xs:schema xmlns="http://www.chinatelecom.com/crm/comm/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.chinatelecom.com/crm/comm/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:complexType name="msgHead">
+		<xs:annotation>
+			<xs:documentation>鉴权包头</xs:documentation>
+		</xs:annotation>
+		<xs:all>
+			<xs:element name="time" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>发送消息包时间
+YYYYMMDDHH24MISS
+</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="from" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>发送系统，标识消息包来源（系统名暂定：SRM和PF）</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="to" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>接收系统，标识消息包目的系统（系统名暂定：SRM和PF）</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="sysSign" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>发起系统（源系统）签名</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="msgType" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>消息类型，填接口调用的方法名称即可</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="serial" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>流水号，消息包唯一标识，对于OSS，发送系统和消息ID构成唯一标识，反馈包体中的流水号应该对应于请求包体中的流水号</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="error">
+		<xs:annotation>
+			<xs:documentation>错误信息</xs:documentation>
+		</xs:annotation>
+		<xs:all>
+			<xs:element name="id" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>错误标识
+1：号码异常（非电信号码、不是数字、位数不对等简单判断）
+2：内容异常（短信内容为null或空字符串）
+3：来源系统异常（来源系统填写错误）
+4：发送类型异常（type填写不正确或没有配置等）
+5：其他异常（保存短信失败等）</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="message" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>错误信息</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:all>
+	</xs:complexType>
+</xs:schema>

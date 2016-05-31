@@ -1,0 +1,7 @@
+#Mon Apr 18 16:52:31 CST 2016
+com.ffcs.crmd.cas.bean.crmbean.querycustorderbynum.InParam=com.ffcs.crmd.cas.bean.crmbean.querycustorderbynum.descriptors.InParamDescriptor
+com.ffcs.crmd.cas.bean.crmbean.querycustorderbynum.OutParam=com.ffcs.crmd.cas.bean.crmbean.querycustorderbynum.descriptors.OutParamDescriptor
+com.ffcs.crmd.cas.bean.crmbean.querycustorderbynum.MsgBody=com.ffcs.crmd.cas.bean.crmbean.querycustorderbynum.descriptors.MsgBodyDescriptor
+com.ffcs.crmd.cas.bean.crmbean.querycustorderbynum.ConnectInfo=com.ffcs.crmd.cas.bean.crmbean.querycustorderbynum.descriptors.ConnectInfoDescriptor
+com.ffcs.crmd.cas.bean.crmbean.querycustorderbynum.Root=com.ffcs.crmd.cas.bean.crmbean.querycustorderbynum.descriptors.RootDescriptor
+com.ffcs.crmd.cas.bean.crmbean.querycustorderbynum.CustOrder=com.ffcs.crmd.cas.bean.crmbean.querycustorderbynum.descriptors.CustOrderDescriptor
