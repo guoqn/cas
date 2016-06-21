@@ -1,6 +1,0 @@
-#Sat Apr 09 14:37:05 CST 2016
-com.ffcs.crmd.cas.bean.hbbean.prefeequery.InParam=com.ffcs.crmd.cas.bean.hbbean.prefeequery.descriptors.InParamDescriptor
-com.ffcs.crmd.cas.bean.hbbean.prefeequery.FeeItem=com.ffcs.crmd.cas.bean.hbbean.prefeequery.descriptors.FeeItemDescriptor
-com.ffcs.crmd.cas.bean.hbbean.prefeequery.MsgBody=com.ffcs.crmd.cas.bean.hbbean.prefeequery.descriptors.MsgBodyDescriptor
-com.ffcs.crmd.cas.bean.hbbean.prefeequery.OutParam=com.ffcs.crmd.cas.bean.hbbean.prefeequery.descriptors.OutParamDescriptor
-com.ffcs.crmd.cas.bean.hbbean.prefeequery.Root=com.ffcs.crmd.cas.bean.hbbean.prefeequery.descriptors.RootDescriptor

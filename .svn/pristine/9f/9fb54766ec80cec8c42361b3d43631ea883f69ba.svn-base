@@ -1,8 +1,0 @@
-#Sat Apr 16 14:40:42 CST 2016
-com.ffcs.crmd.cas.bean.crmbean.saveDocInfo.OutParam=com.ffcs.crmd.cas.bean.crmbean.saveDocInfo.descriptors.OutParamDescriptor
-com.ffcs.crmd.cas.bean.crmbean.saveDocInfo.InParam=com.ffcs.crmd.cas.bean.crmbean.saveDocInfo.descriptors.InParamDescriptor
-com.ffcs.crmd.cas.bean.crmbean.saveDocInfo.MsgBody=com.ffcs.crmd.cas.bean.crmbean.saveDocInfo.descriptors.MsgBodyDescriptor
-com.ffcs.crmd.cas.bean.crmbean.saveDocInfo.Error=com.ffcs.crmd.cas.bean.crmbean.saveDocInfo.descriptors.ErrorDescriptor
-com.ffcs.crmd.cas.bean.crmbean.saveDocInfo.MsgHead=com.ffcs.crmd.cas.bean.crmbean.saveDocInfo.descriptors.MsgHeadDescriptor
-com.ffcs.crmd.cas.bean.crmbean.saveDocInfo.Root=com.ffcs.crmd.cas.bean.crmbean.saveDocInfo.descriptors.RootDescriptor
-com.ffcs.crmd.cas.bean.crmbean.saveDocInfo.DocList=com.ffcs.crmd.cas.bean.crmbean.saveDocInfo.descriptors.DocListDescriptor

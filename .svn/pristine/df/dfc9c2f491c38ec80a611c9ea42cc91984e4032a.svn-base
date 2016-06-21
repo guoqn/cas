@@ -1,5 +1,0 @@
-#Fri Mar 18 09:41:42 CST 2016
-com.ffcs.crmd.cas.bean.casbean.droppresaleordertocrm.Root=com.ffcs.crmd.cas.bean.casbean.droppresaleordertocrm.descriptors.RootDescriptor
-com.ffcs.crmd.cas.bean.casbean.droppresaleordertocrm.InParam=com.ffcs.crmd.cas.bean.casbean.droppresaleordertocrm.descriptors.InParamDescriptor
-com.ffcs.crmd.cas.bean.casbean.droppresaleordertocrm.OutParam=com.ffcs.crmd.cas.bean.casbean.droppresaleordertocrm.descriptors.OutParamDescriptor
-com.ffcs.crmd.cas.bean.casbean.droppresaleordertocrm.MsgBody=com.ffcs.crmd.cas.bean.casbean.droppresaleordertocrm.descriptors.MsgBodyDescriptor

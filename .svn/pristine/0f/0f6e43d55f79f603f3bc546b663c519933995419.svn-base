@@ -1,6 +1,0 @@
-#Tue May 03 11:12:44 CST 2016
-com.ffcs.crmd.cas.bean.casbean.checkcouldcancel.InParam=com.ffcs.crmd.cas.bean.casbean.checkcouldcancel.descriptors.InParamDescriptor
-com.ffcs.crmd.cas.bean.casbean.checkcouldcancel.MsgBody=com.ffcs.crmd.cas.bean.casbean.checkcouldcancel.descriptors.MsgBodyDescriptor
-com.ffcs.crmd.cas.bean.casbean.checkcouldcancel.PreOrderInfo=com.ffcs.crmd.cas.bean.casbean.checkcouldcancel.descriptors.PreOrderInfoDescriptor
-com.ffcs.crmd.cas.bean.casbean.checkcouldcancel.OutParam=com.ffcs.crmd.cas.bean.casbean.checkcouldcancel.descriptors.OutParamDescriptor
-com.ffcs.crmd.cas.bean.casbean.checkcouldcancel.Root=com.ffcs.crmd.cas.bean.casbean.checkcouldcancel.descriptors.RootDescriptor

@@ -1,5 +1,0 @@
-#Fri Mar 18 10:32:41 CST 2016
-com.ffcs.crmd.cas.bean.casbean.preordercommitcheck.OutParam=com.ffcs.crmd.cas.bean.casbean.preordercommitcheck.descriptors.OutParamDescriptor
-com.ffcs.crmd.cas.bean.casbean.preordercommitcheck.Root=com.ffcs.crmd.cas.bean.casbean.preordercommitcheck.descriptors.RootDescriptor
-com.ffcs.crmd.cas.bean.casbean.preordercommitcheck.InParam=com.ffcs.crmd.cas.bean.casbean.preordercommitcheck.descriptors.InParamDescriptor
-com.ffcs.crmd.cas.bean.casbean.preordercommitcheck.MsgBody=com.ffcs.crmd.cas.bean.casbean.preordercommitcheck.descriptors.MsgBodyDescriptor

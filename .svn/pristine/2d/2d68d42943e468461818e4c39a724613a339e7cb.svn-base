@@ -1,6 +1,0 @@
-#Thu Mar 10 16:01:24 CST 2016
-com.ffcs.crmd.cas.bean.crmbean.querycustorder.CustomerOrder=com.ffcs.crmd.cas.bean.crmbean.querycustorder.descriptors.CustomerOrderDescriptor
-com.ffcs.crmd.cas.bean.crmbean.querycustorder.OutParam=com.ffcs.crmd.cas.bean.crmbean.querycustorder.descriptors.OutParamDescriptor
-com.ffcs.crmd.cas.bean.crmbean.querycustorder.Root=com.ffcs.crmd.cas.bean.crmbean.querycustorder.descriptors.RootDescriptor
-com.ffcs.crmd.cas.bean.crmbean.querycustorder.InParam=com.ffcs.crmd.cas.bean.crmbean.querycustorder.descriptors.InParamDescriptor
-com.ffcs.crmd.cas.bean.crmbean.querycustorder.MsgBody=com.ffcs.crmd.cas.bean.crmbean.querycustorder.descriptors.MsgBodyDescriptor

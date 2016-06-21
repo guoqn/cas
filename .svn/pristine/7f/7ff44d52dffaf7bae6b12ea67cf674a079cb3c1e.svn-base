@@ -1,5 +1,0 @@
-#Tue Mar 01 11:40:17 CST 2016
-com.ffcs.crmd.cas.bean.hbbean.precompletepayment.InParam=com.ffcs.crmd.cas.bean.hbbean.precompletepayment.descriptors.InParamDescriptor
-com.ffcs.crmd.cas.bean.hbbean.precompletepayment.OutParam=com.ffcs.crmd.cas.bean.hbbean.precompletepayment.descriptors.OutParamDescriptor
-com.ffcs.crmd.cas.bean.hbbean.precompletepayment.MsgBody=com.ffcs.crmd.cas.bean.hbbean.precompletepayment.descriptors.MsgBodyDescriptor
-com.ffcs.crmd.cas.bean.hbbean.precompletepayment.Root=com.ffcs.crmd.cas.bean.hbbean.precompletepayment.descriptors.RootDescriptor

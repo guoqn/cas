@@ -1,5 +1,0 @@
-#Thu Apr 28 17:24:28 CST 2016
-com.ffcs.crmd.cas.bean.casbean.save.returntopresale.MsgBody=com.ffcs.crmd.cas.bean.casbean.save.returntopresale.descriptors.MsgBodyDescriptor
-com.ffcs.crmd.cas.bean.casbean.save.returntopresale.OutParam=com.ffcs.crmd.cas.bean.casbean.save.returntopresale.descriptors.OutParamDescriptor
-com.ffcs.crmd.cas.bean.casbean.save.returntopresale.Root=com.ffcs.crmd.cas.bean.casbean.save.returntopresale.descriptors.RootDescriptor
-com.ffcs.crmd.cas.bean.casbean.save.returntopresale.InParam=com.ffcs.crmd.cas.bean.casbean.save.returntopresale.descriptors.InParamDescriptor

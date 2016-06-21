@@ -1,6 +1,0 @@
-#Thu Apr 28 11:49:21 CST 2016
-com.ffcs.crmd.cas.bean.casbean.query.qureryintassignorg.Root=com.ffcs.crmd.cas.bean.casbean.query.qureryintassignorg.descriptors.RootDescriptor
-com.ffcs.crmd.cas.bean.casbean.query.qureryintassignorg.InParam=com.ffcs.crmd.cas.bean.casbean.query.qureryintassignorg.descriptors.InParamDescriptor
-com.ffcs.crmd.cas.bean.casbean.query.qureryintassignorg.OutParam=com.ffcs.crmd.cas.bean.casbean.query.qureryintassignorg.descriptors.OutParamDescriptor
-com.ffcs.crmd.cas.bean.casbean.query.qureryintassignorg.MsgBody=com.ffcs.crmd.cas.bean.casbean.query.qureryintassignorg.descriptors.MsgBodyDescriptor
-com.ffcs.crmd.cas.bean.casbean.query.qureryintassignorg.ReturnInfo=com.ffcs.crmd.cas.bean.casbean.query.qureryintassignorg.descriptors.ReturnInfoDescriptor

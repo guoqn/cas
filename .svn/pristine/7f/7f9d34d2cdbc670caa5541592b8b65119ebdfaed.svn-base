@@ -1,7 +1,0 @@
-#Fri Mar 18 10:35:16 CST 2016
-com.ffcs.crmd.cas.bean.casbean.query.querypreorderisrelation.Error=com.ffcs.crmd.cas.bean.casbean.query.querypreorderisrelation.descriptors.ErrorDescriptor
-com.ffcs.crmd.cas.bean.casbean.query.querypreorderisrelation.InParam=com.ffcs.crmd.cas.bean.casbean.query.querypreorderisrelation.descriptors.InParamDescriptor
-com.ffcs.crmd.cas.bean.casbean.query.querypreorderisrelation.MsgBody=com.ffcs.crmd.cas.bean.casbean.query.querypreorderisrelation.descriptors.MsgBodyDescriptor
-com.ffcs.crmd.cas.bean.casbean.query.querypreorderisrelation.MsgHead=com.ffcs.crmd.cas.bean.casbean.query.querypreorderisrelation.descriptors.MsgHeadDescriptor
-com.ffcs.crmd.cas.bean.casbean.query.querypreorderisrelation.Root=com.ffcs.crmd.cas.bean.casbean.query.querypreorderisrelation.descriptors.RootDescriptor
-com.ffcs.crmd.cas.bean.casbean.query.querypreorderisrelation.OutParam=com.ffcs.crmd.cas.bean.casbean.query.querypreorderisrelation.descriptors.OutParamDescriptor

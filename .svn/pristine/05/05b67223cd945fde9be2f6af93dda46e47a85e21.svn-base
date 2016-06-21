@@ -1,8 +1,0 @@
-#Tue May 17 16:48:45 CST 2016
-com.ffcs.crmd.cas.bean.casbean.query.querypreorderstatus.InParam=com.ffcs.crmd.cas.bean.casbean.query.querypreorderstatus.descriptors.InParamDescriptor
-com.ffcs.crmd.cas.bean.casbean.query.querypreorderstatus.OutParam=com.ffcs.crmd.cas.bean.casbean.query.querypreorderstatus.descriptors.OutParamDescriptor
-com.ffcs.crmd.cas.bean.casbean.query.querypreorderstatus.Error=com.ffcs.crmd.cas.bean.casbean.query.querypreorderstatus.descriptors.ErrorDescriptor
-com.ffcs.crmd.cas.bean.casbean.query.querypreorderstatus.MsgBody=com.ffcs.crmd.cas.bean.casbean.query.querypreorderstatus.descriptors.MsgBodyDescriptor
-com.ffcs.crmd.cas.bean.casbean.query.querypreorderstatus.MsgHead=com.ffcs.crmd.cas.bean.casbean.query.querypreorderstatus.descriptors.MsgHeadDescriptor
-com.ffcs.crmd.cas.bean.casbean.query.querypreorderstatus.StatusInfo=com.ffcs.crmd.cas.bean.casbean.query.querypreorderstatus.descriptors.StatusInfoDescriptor
-com.ffcs.crmd.cas.bean.casbean.query.querypreorderstatus.Root=com.ffcs.crmd.cas.bean.casbean.query.querypreorderstatus.descriptors.RootDescriptor

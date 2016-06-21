@@ -1,5 +1,0 @@
-#Tue May 03 16:29:46 CST 2016
-com.ffcs.crmd.cas.bean.casbean.cancelpreorder.InParam=com.ffcs.crmd.cas.bean.casbean.cancelpreorder.descriptors.InParamDescriptor
-com.ffcs.crmd.cas.bean.casbean.cancelpreorder.MsgBody=com.ffcs.crmd.cas.bean.casbean.cancelpreorder.descriptors.MsgBodyDescriptor
-com.ffcs.crmd.cas.bean.casbean.cancelpreorder.OutParam=com.ffcs.crmd.cas.bean.casbean.cancelpreorder.descriptors.OutParamDescriptor
-com.ffcs.crmd.cas.bean.casbean.cancelpreorder.Root=com.ffcs.crmd.cas.bean.casbean.cancelpreorder.descriptors.RootDescriptor

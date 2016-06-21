@@ -1,6 +1,0 @@
-#Thu Jan 21 19:05:57 CST 2016
-com.ffcs.crmd.cas.bean.hbbean.preannouncecharge.OutParam=com.ffcs.crmd.cas.bean.hbbean.preannouncecharge.descriptors.OutParamDescriptor
-com.ffcs.crmd.cas.bean.hbbean.preannouncecharge.Root=com.ffcs.crmd.cas.bean.hbbean.preannouncecharge.descriptors.RootDescriptor
-com.ffcs.crmd.cas.bean.hbbean.preannouncecharge.FeeItem=com.ffcs.crmd.cas.bean.hbbean.preannouncecharge.descriptors.FeeItemDescriptor
-com.ffcs.crmd.cas.bean.hbbean.preannouncecharge.MsgBody=com.ffcs.crmd.cas.bean.hbbean.preannouncecharge.descriptors.MsgBodyDescriptor
-com.ffcs.crmd.cas.bean.hbbean.preannouncecharge.InParam=com.ffcs.crmd.cas.bean.hbbean.preannouncecharge.descriptors.InParamDescriptor

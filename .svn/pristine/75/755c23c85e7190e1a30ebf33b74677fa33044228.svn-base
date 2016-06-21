@@ -1,2 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<binding xmlns="http://www.castor.org/SourceGenerator/Binding" defaultBindingType="type"><package><name>com.ffcs.crmd.cas.bean.padbean</name><schemaLocation>mobileServices.xsd</schemaLocation></package><package><name>com.ffcs.crmd.cas.bean.padbean</name><schemaLocation>ERROR.xsd</schemaLocation></package></binding>

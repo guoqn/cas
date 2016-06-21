@@ -1,8 +1,0 @@
-#Fri May 27 10:35:54 CST 2016
-com.ffcs.crmd.cas.bean.casbean.presaleorder.PreSaleOrderAttr=com.ffcs.crmd.cas.bean.casbean.presaleorder.descriptors.PreSaleOrderAttrDescriptor
-com.ffcs.crmd.cas.bean.casbean.presaleorder.ISaleAcctItem=com.ffcs.crmd.cas.bean.casbean.presaleorder.descriptors.ISaleAcctItemDescriptor
-com.ffcs.crmd.cas.bean.casbean.presaleorder.PreSaleOrder=com.ffcs.crmd.cas.bean.casbean.presaleorder.descriptors.PreSaleOrderDescriptor
-com.ffcs.crmd.cas.bean.casbean.presaleorder.PreSaleOrderPool=com.ffcs.crmd.cas.bean.casbean.presaleorder.descriptors.PreSaleOrderPoolDescriptor
-com.ffcs.crmd.cas.bean.casbean.presaleorder.PreSaleOrderItem=com.ffcs.crmd.cas.bean.casbean.presaleorder.descriptors.PreSaleOrderItemDescriptor
-com.ffcs.crmd.cas.bean.casbean.presaleorder.PreSaleAcctItem=com.ffcs.crmd.cas.bean.casbean.presaleorder.descriptors.PreSaleAcctItemDescriptor
-com.ffcs.crmd.cas.bean.casbean.presaleorder.PreSaleAcctItemAttr=com.ffcs.crmd.cas.bean.casbean.presaleorder.descriptors.PreSaleAcctItemAttrDescriptor

@@ -1,5 +1,0 @@
-#Fri Mar 18 09:42:03 CST 2016
-com.ffcs.crmd.cas.bean.casbean.modpresaleorder.MsgBody=com.ffcs.crmd.cas.bean.casbean.modpresaleorder.descriptors.MsgBodyDescriptor
-com.ffcs.crmd.cas.bean.casbean.modpresaleorder.OutParam=com.ffcs.crmd.cas.bean.casbean.modpresaleorder.descriptors.OutParamDescriptor
-com.ffcs.crmd.cas.bean.casbean.modpresaleorder.Root=com.ffcs.crmd.cas.bean.casbean.modpresaleorder.descriptors.RootDescriptor
-com.ffcs.crmd.cas.bean.casbean.modpresaleorder.InParam=com.ffcs.crmd.cas.bean.casbean.modpresaleorder.descriptors.InParamDescriptor

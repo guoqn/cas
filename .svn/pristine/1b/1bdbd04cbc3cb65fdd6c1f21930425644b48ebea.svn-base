@@ -1,6 +1,0 @@
-#Tue Feb 23 11:56:30 CST 2016
-com.ffcs.crmd.cas.bean.casbean.autogenordercomplete.InParam=com.ffcs.crmd.cas.bean.casbean.autogenordercomplete.descriptors.InParamDescriptor
-com.ffcs.crmd.cas.bean.casbean.autogenordercomplete.MsgBody=com.ffcs.crmd.cas.bean.casbean.autogenordercomplete.descriptors.MsgBodyDescriptor
-com.ffcs.crmd.cas.bean.casbean.autogenordercomplete.Root=com.ffcs.crmd.cas.bean.casbean.autogenordercomplete.descriptors.RootDescriptor
-com.ffcs.crmd.cas.bean.casbean.autogenordercomplete.OutParam=com.ffcs.crmd.cas.bean.casbean.autogenordercomplete.descriptors.OutParamDescriptor
-com.ffcs.crmd.cas.bean.casbean.autogenordercomplete.Error=com.ffcs.crmd.cas.bean.casbean.autogenordercomplete.descriptors.ErrorDescriptor

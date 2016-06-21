@@ -1,6 +1,0 @@
-#Wed Mar 30 15:24:28 CST 2016
-com.ffcs.crmd.cas.bean.casbean.autogenordersave.Root=com.ffcs.crmd.cas.bean.casbean.autogenordersave.descriptors.RootDescriptor
-com.ffcs.crmd.cas.bean.casbean.autogenordersave.OutParam=com.ffcs.crmd.cas.bean.casbean.autogenordersave.descriptors.OutParamDescriptor
-com.ffcs.crmd.cas.bean.casbean.autogenordersave.AutoGenOrder=com.ffcs.crmd.cas.bean.casbean.autogenordersave.descriptors.AutoGenOrderDescriptor
-com.ffcs.crmd.cas.bean.casbean.autogenordersave.InParam=com.ffcs.crmd.cas.bean.casbean.autogenordersave.descriptors.InParamDescriptor
-com.ffcs.crmd.cas.bean.casbean.autogenordersave.MsgBody=com.ffcs.crmd.cas.bean.casbean.autogenordersave.descriptors.MsgBodyDescriptor

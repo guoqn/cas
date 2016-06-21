@@ -1,7 +1,0 @@
-.btn-default2 {
-   color: #333;
-   background-color: #fff;
-   border-color: #ccc;
-   background:url(../img/search.png) no-repeat center;
-   heigth:90px;
- }

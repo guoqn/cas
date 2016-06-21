@@ -1,5 +1,0 @@
-#Thu Mar 03 09:50:44 CST 2016
-com.ffcs.crmd.cas.bean.crmbean.converttomodorder.OutParam=com.ffcs.crmd.cas.bean.crmbean.converttomodorder.descriptors.OutParamDescriptor
-com.ffcs.crmd.cas.bean.crmbean.converttomodorder.InParam=com.ffcs.crmd.cas.bean.crmbean.converttomodorder.descriptors.InParamDescriptor
-com.ffcs.crmd.cas.bean.crmbean.converttomodorder.MsgBody=com.ffcs.crmd.cas.bean.crmbean.converttomodorder.descriptors.MsgBodyDescriptor
-com.ffcs.crmd.cas.bean.crmbean.converttomodorder.Root=com.ffcs.crmd.cas.bean.crmbean.converttomodorder.descriptors.RootDescriptor

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<design xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="crm.xsd">
-<!-- custint -->  
-<file name="comm.xsd" description="" package="com.ffcs.crmd.cas.bean.hbbean.comm"/>
-    <file name="preFeeQuery.xsd" description="" package="com.ffcs.crmd.cas.bean.hbbean.prefeequery"/>
-    <file name="preFeeCancel.xsd" description="" package="com.ffcs.crmd.cas.bean.hbbean.prefeecancel"/>
-    <file name="pre_announce_charge.xsd" description="" package="com.ffcs.crmd.cas.bean.hbbean.preannouncecharge"/>
-    <file name="pre_complete_payment.xsd" description="" package="com.ffcs.crmd.cas.bean.hbbean.precompletepayment"/>
-</design>

@@ -1,7 +1,0 @@
-#Thu Jan 21 11:45:41 CST 2016
-com.ffcs.crmd.cas.bean.padbean.MOBILE_SERVICE_REQ=com.ffcs.crmd.cas.bean.padbean.descriptors.MOBILE_SERVICE_REQDescriptor
-com.ffcs.crmd.cas.bean.padbean.QRY_BODY=com.ffcs.crmd.cas.bean.padbean.descriptors.QRY_BODYDescriptor
-com.ffcs.crmd.cas.bean.padbean.ERROR=com.ffcs.crmd.cas.bean.padbean.descriptors.ERRORDescriptor
-com.ffcs.crmd.cas.bean.padbean.REFLASH_PRE_SALE_ORD_REQ=com.ffcs.crmd.cas.bean.padbean.descriptors.REFLASH_PRE_SALE_ORD_REQDescriptor
-com.ffcs.crmd.cas.bean.padbean.QRY_TYPE=com.ffcs.crmd.cas.bean.padbean.descriptors.QRY_TYPEDescriptor
-com.ffcs.crmd.cas.bean.padbean.MOBILE_SERVICE_RSP=com.ffcs.crmd.cas.bean.padbean.descriptors.MOBILE_SERVICE_RSPDescriptor

@@ -1,5 +1,0 @@
-#Tue Feb 16 09:46:04 CST 2016
-com.ffcs.crmd.cas.bean.crmbean.checkrelintfdeporder.OutParam=com.ffcs.crmd.cas.bean.crmbean.checkrelintfdeporder.descriptors.OutParamDescriptor
-com.ffcs.crmd.cas.bean.crmbean.checkrelintfdeporder.InParam=com.ffcs.crmd.cas.bean.crmbean.checkrelintfdeporder.descriptors.InParamDescriptor
-com.ffcs.crmd.cas.bean.crmbean.checkrelintfdeporder.MsgBody=com.ffcs.crmd.cas.bean.crmbean.checkrelintfdeporder.descriptors.MsgBodyDescriptor
-com.ffcs.crmd.cas.bean.crmbean.checkrelintfdeporder.Root=com.ffcs.crmd.cas.bean.crmbean.checkrelintfdeporder.descriptors.RootDescriptor

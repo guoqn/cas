@@ -1,5 +1,0 @@
-#Tue Jan 19 20:40:18 CST 2016
-com.ffcs.crmd.cas.bean.smsbean.smpost.InParam=com.ffcs.crmd.cas.bean.smsbean.smpost.descriptors.InParamDescriptor
-com.ffcs.crmd.cas.bean.smsbean.smpost.MsgBody=com.ffcs.crmd.cas.bean.smsbean.smpost.descriptors.MsgBodyDescriptor
-com.ffcs.crmd.cas.bean.smsbean.smpost.OutParam=com.ffcs.crmd.cas.bean.smsbean.smpost.descriptors.OutParamDescriptor
-com.ffcs.crmd.cas.bean.smsbean.smpost.Root=com.ffcs.crmd.cas.bean.smsbean.smpost.descriptors.RootDescriptor

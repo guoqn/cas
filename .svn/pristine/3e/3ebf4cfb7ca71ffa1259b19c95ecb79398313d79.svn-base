@@ -1,6 +1,0 @@
-#Thu Apr 07 19:49:49 CST 2016
-com.ffcs.crmd.cas.bean.crmbean.queryParty.OutParam=com.ffcs.crmd.cas.bean.crmbean.queryParty.descriptors.OutParamDescriptor
-com.ffcs.crmd.cas.bean.crmbean.queryParty.InParam=com.ffcs.crmd.cas.bean.crmbean.queryParty.descriptors.InParamDescriptor
-com.ffcs.crmd.cas.bean.crmbean.queryParty.MsgBody=com.ffcs.crmd.cas.bean.crmbean.queryParty.descriptors.MsgBodyDescriptor
-com.ffcs.crmd.cas.bean.crmbean.queryParty.PartyContactInfo=com.ffcs.crmd.cas.bean.crmbean.queryParty.descriptors.PartyContactInfoDescriptor
-com.ffcs.crmd.cas.bean.crmbean.queryParty.Root=com.ffcs.crmd.cas.bean.crmbean.queryParty.descriptors.RootDescriptor
